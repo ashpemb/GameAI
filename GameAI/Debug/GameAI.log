@@ -1,0 +1,42 @@
+﻿Build started 25/01/2016 14:27:47.
+     1>Project "C:\Users\Ashley\Documents\Github\GameAI\GameAI\GameAI.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Ashley\Documents\Github\GameAI\GameAI\\SDL\mixer_include /IC:\Users\Ashley\Documents\Github\GameAI\GameAI\\SDL\include /IC:\Users\Ashley\Documents\Github\GameAI\GameAI\\SDL\image_include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt TankManager.cpp p016671e.cpp
+         p016671e.cpp
+         TankManager.cpp
+     1>c:\users\ashley\documents\github\gameai\gameai\tankmanager.cpp(167): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+     1>c:\users\ashley\documents\github\gameai\gameai\tankmanager.cpp(168): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Ashley\Documents\Github\GameAI\Debug\GameAI.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Ashley\Documents\Github\GameAI\GameAI\\SDL kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Ashley\Documents\Github\GameAI\Debug\GameAI.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Ashley\Documents\Github\GameAI\Debug\GameAI.lib" /MACHINE:X86 Debug\BaseTank.obj
+         Debug\Collisions.obj
+         Debug\ControlledTank.obj
+         Debug\GameObject.obj
+         Debug\GameScreen.obj
+         Debug\GameScreenLevel1.obj
+         Debug\GameScreenManager.obj
+         Debug\LevelMap.obj
+         Debug\ObstacleManager.obj
+         Debug\p016671e.obj
+         Debug\PickUpManager.obj
+         Debug\Projectile.obj
+         Debug\ProjectileManager.obj
+         Debug\Source.obj
+         Debug\TankManager.obj
+         Debug\Texture2D.obj
+         Debug\tinystr.obj
+         Debug\tinyxml.obj
+         Debug\tinyxmlerror.obj
+         Debug\tinyxmlparser.obj
+         Debug\Waypoint.obj
+         Debug\WaypointManager.obj
+         SDL\SDL2.lib
+         SDL\SDL2main.lib
+         SDL\SDL2_image.lib
+         SDL\SDL2_mixer.lib
+         GameAI.vcxproj -> C:\Users\Ashley\Documents\Github\GameAI\Debug\GameAI.exe
+     1>Done Building Project "C:\Users\Ashley\Documents\Github\GameAI\GameAI\GameAI.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:14.87
