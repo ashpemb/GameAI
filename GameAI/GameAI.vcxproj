@@ -80,6 +80,7 @@
     <ClInclude Include="PickUpManager.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileManager.h" />
+    <ClInclude Include="SteeringP016671e.h" />
     <ClInclude Include="TankManager.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TinyXML\tinystr.h" />
@@ -102,6 +103,7 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="SteeringP016671e.cpp" />
     <ClCompile Include="TankManager.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="TinyXML\tinystr.cpp" />

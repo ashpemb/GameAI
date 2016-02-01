@@ -84,6 +84,9 @@
     <ClInclude Include="p016671e.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SteeringP016671e.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WaypointManager.cpp">
@@ -150,6 +153,9 @@
       <Filter>TinyXML</Filter>
     </ClCompile>
     <ClCompile Include="p016671e.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SteeringP016671e.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

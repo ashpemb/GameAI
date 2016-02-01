@@ -2,6 +2,7 @@
 #define P016671ETANK_H
 
 #include "BaseTank.h"
+#include "SteeringP016671e.h"
 #include <SDL.h>
 #include "Commons.h"
 
@@ -20,6 +21,10 @@ public:
 
 	void RotateHeadingByRadian(double radian, int sign);
 
+	void ProcessInput(float deltaTime);
+
+	void SeekToMouse(float deltaTime);
+
 	//---------------------------------------------------------------
 protected:
 	void	MoveInHeadingDirection(float deltaTime);
@@ -32,6 +37,10 @@ private:
 	TURN_DIRECTION  mManTurnDirection;
 	bool			mManKeyDown;
 	bool			mFireKeyDown;
+	bool			mMouseLeftDown;
+	SteeringP016671e* steering;
+	POINT p;
+	Vector2D cursorPos;
 };
 
 //---------------------------------------------------------------

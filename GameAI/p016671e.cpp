@@ -15,6 +15,7 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mManTurnDirection   = DIRECTION_UNKNOWN;
 	mManKeyDown			= false;
 	mFireKeyDown		= false;
+	steering = new SteeringP016671e();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -34,7 +35,7 @@ void P016671eTank::ChangeState(BASE_TANK_STATE newState)
 
 void P016671eTank::Update(float deltaTime, SDL_Event e)
 {
-
+	ProcessInput(deltaTime);
 
 	//Call parent update.
 	BaseTank::Update(deltaTime, e);
@@ -93,3 +94,22 @@ void P016671eTank::RotateHeadingByRadian(double radian, int sign)
 }
 
 //--------------------------------------------------------------------------------------------------
+
+void P016671eTank::ProcessInput(float deltaTime)
+{
+	if (WM_LBUTTONDOWN)
+	{
+		GetCursorPos(&p);
+		cursorPos.x = p.x;
+		cursorPos.y = p.y;
+		SeekToMouse(deltaTime);
+	}
+}
+
+void P016671eTank::SeekToMouse(float deltaTime)
+{
+	
+	Vector2D SeekTo = steering->Seek(cursorPos, GetCentrePosition(),GetVelocity(), GetMaxSpeed());
+	SetHeading(SeekTo);
+	MoveInHeadingDirection(deltaTime);
+}
