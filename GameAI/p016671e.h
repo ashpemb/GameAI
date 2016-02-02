@@ -19,9 +19,6 @@ public:
 
 	void Update(float deltaTime, SDL_Event e);
 
-	void RotateHeadingByRadian(double radian, int sign);
-
-	void ProcessInput(float deltaTime);
 
 	void SeekToMouse(float deltaTime);
 
