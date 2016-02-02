@@ -37,10 +37,11 @@ private:
 	TURN_DIRECTION  mManTurnDirection;
 	bool			mManKeyDown;
 	bool			mFireKeyDown;
-	bool			mMouseLeftDown;
 	SteeringP016671e* steering;
 	POINT p;
 	Vector2D cursorPos;
+	float mMouseX;
+	float mMouseY;
 };
 
 //---------------------------------------------------------------

@@ -22,6 +22,7 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 
 P016671eTank::~P016671eTank()
 {
+	delete steering;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -36,7 +37,20 @@ void P016671eTank::ChangeState(BASE_TANK_STATE newState)
 void P016671eTank::Update(float deltaTime, SDL_Event e)
 {
 	ProcessInput(deltaTime);
+	switch (e.type)
+	{
+	case SDL_MOUSEMOTION:
+		mMouseX = e.motion.x;
+		mMouseY = e.motion.y;
+		
+		//cout << mMouseX << ":" << mMouseY << endl;
+		Vector2D cursorPos = { mMouseX, mMouseY };
 
+		SeekToMouse(deltaTime);
+		RotateHeadingToFacePosition(cursorPos);
+		break;
+	}
+	
 	//Call parent update.
 	BaseTank::Update(deltaTime, e);
 }
@@ -97,19 +111,24 @@ void P016671eTank::RotateHeadingByRadian(double radian, int sign)
 
 void P016671eTank::ProcessInput(float deltaTime)
 {
-	if (WM_LBUTTONDOWN)
-	{
-		GetCursorPos(&p);
-		cursorPos.x = p.x;
-		cursorPos.y = p.y;
-		SeekToMouse(deltaTime);
-	}
+	//if ((GetKeyState(VK_LBUTTON) != 0))
+	//{
+	//	GetCursorPos(&p);
+	//	cursorPos.x = p.x;
+	//	cursorPos.y = p.y;
+	//	SeekToMouse(deltaTime);
+	//}
+
 }
 
 void P016671eTank::SeekToMouse(float deltaTime)
 {
+	Vector2D Seeking;
+	Seeking.x = cursorPos.x;
+	Seeking.y = cursorPos.y;
+	Vector2D SeekToVelocity = Vec2DNormalize(steering->Seek(cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed()));
+
+	Vector2D Seek = (SeekToVelocity - Seeking);
 	
-	Vector2D SeekTo = steering->Seek(cursorPos, GetCentrePosition(),GetVelocity(), GetMaxSpeed());
-	SetHeading(SeekTo);
 	MoveInHeadingDirection(deltaTime);
 }

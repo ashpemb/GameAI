@@ -122,7 +122,9 @@
   <ItemGroup>
     <Xml Include="XML Data Files\GameAI.xml" />
     <Xml Include="XML Data Files\GameAIOneBuilding.xml" />
-    <Xml Include="XML Data Files\TankData.xml" />
+    <Xml Include="XML Data Files\TankData.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
