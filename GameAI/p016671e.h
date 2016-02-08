@@ -6,6 +6,8 @@
 #include <SDL.h>
 #include "Commons.h"
 
+
+
 //---------------------------------------------------------------
 
 class P016671eTank : protected BaseTank
@@ -21,6 +23,7 @@ public:
 
 
 	void SeekToMouse(float deltaTime);
+	void FleeFromMouse(float deltaTime);
 
 	//---------------------------------------------------------------
 protected:

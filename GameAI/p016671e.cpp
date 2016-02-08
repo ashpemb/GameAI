@@ -16,6 +16,7 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mManKeyDown			= false;
 	mFireKeyDown		= false;
 	steering = new SteeringP016671e();
+	steering->FleeOn();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -36,19 +37,44 @@ void P016671eTank::ChangeState(BASE_TANK_STATE newState)
 
 void P016671eTank::Update(float deltaTime, SDL_Event e)
 {
-	switch (e.type)
+	switch (steering->GetState())
 	{
-	case SDL_MOUSEBUTTONDOWN:
-		mMouseX = e.button.x;
-		mMouseY = e.button.y;
-		
-		//cout << mMouseX << ":" << mMouseY << endl;
-		cursorPos = { mMouseX, mMouseY };
+	case SEEK:
+		switch (e.type)
+		{
+		case SDL_MOUSEBUTTONDOWN:
+			mMouseX = e.button.x;
+			mMouseY = e.button.y;
 
-		SeekToMouse(deltaTime);
+			//cout << mMouseX << ":" << mMouseY << endl;
+			cursorPos = { mMouseX, mMouseY };
+
+			SeekToMouse(deltaTime);
+			break;
+		}
+		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
+		{
+			SeekToMouse(deltaTime);
+		}
+		break;
+	case FLEE:
+		switch (e.type)
+		{
+		case SDL_MOUSEBUTTONDOWN:
+			mMouseX = e.button.x;
+			mMouseY = e.button.y;
+
+			cursorPos = { mMouseX, mMouseY };
+
+			FleeFromMouse(deltaTime);
+			break;
+		}
+		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
+		{
+			FleeFromMouse(deltaTime);
+		}
 		break;
 	}
-
 	//Call parent update.
 	BaseTank::Update(deltaTime, e);
 }
@@ -89,5 +115,12 @@ void P016671eTank::SeekToMouse(float deltaTime)
 {
 	Vector2D combinedForce = steering->Seek(cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
 	mVelocity += combinedForce;
+	MoveInHeadingDirection(deltaTime);
+}
+
+void P016671eTank::FleeFromMouse(float deltaTime)
+{
+	Vector2D combinedForce = steering->Seek(cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
+	mVelocity -= combinedForce;
 	MoveInHeadingDirection(deltaTime);
 }
