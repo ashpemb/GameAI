@@ -29,4 +29,5 @@ public:
 private:
 	int tankState;
 	Vector2D combinedForce;
+	double fleeRadius;
 };

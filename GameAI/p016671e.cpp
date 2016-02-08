@@ -16,8 +16,8 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mManKeyDown			= false;
 	mFireKeyDown		= false;
 	steering = new SteeringP016671e();
-	steering->SeekMouseOn();
-	//steering->FleeMouse();
+	//steering->SeekMouseOn();
+	steering->FleeMouse();
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 
 SteeringP016671e::SteeringP016671e()
 {
-
+	fleeRadius = 200;
 }
 Vector2D SteeringP016671e::Seek(Vector2D targetPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
 {
@@ -19,6 +19,12 @@ Vector2D SteeringP016671e::SeekToMouse(float deltaTime, Vector2D cursorPos, Vect
 Vector2D SteeringP016671e::FleeFromMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
 {
 	Vector2D force = Seek(cursorPos, tankPos, velocity, maxSpeed);
+	Vector2D click = cursorPos - tankPos;
+	if (click.Length() > fleeRadius)
+	{
+		force.x = 0.0f;
+		force.y = 0.0f;
+	}
 	return force;
 }
 
