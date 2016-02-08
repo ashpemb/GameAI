@@ -21,7 +21,7 @@ GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer
 	mLevelMap = new LevelMap(renderer);
 
 	//Set up the waypoints.
-	//WaypointManager::Instance()->Init(renderer);
+	WaypointManager::Instance()->Init(renderer);
 
 	//Set up the obstacles.
 	ObstacleManager::Instance()->Init(renderer);
@@ -30,7 +30,7 @@ GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer
 	TankManager::Instance()->Init(renderer);
 
 	//Set up PickUps
-	//PickUpManager::Instance()->Init(renderer);
+	PickUpManager::Instance()->Init(renderer);
 
 	//Set up projectiles that start on screen.
 	ProjectileManager::Instance()->Init(renderer);
@@ -59,10 +59,10 @@ void GameScreenLevel1::Render()
 	ProjectileManager::Instance()->RenderProjectiles();
 
 	//Draw the waypoints.
-	//WaypointManager::Instance()->RenderWaypoints();
+	WaypointManager::Instance()->RenderWaypoints();
 
 	//Draw the pickUps.
-	//PickUpManager::Instance()->RenderPickUps();
+	PickUpManager::Instance()->RenderPickUps();
 
 	//Draw the tanks after everything else.
 	TankManager::Instance()->RenderTanks();
@@ -92,8 +92,6 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 	//Update the tanks.
 	TankManager::Instance()->UpdateTanks(deltaTime, e);
-	//Do Collision checks.
-	//TankManager::Instance()->CheckForCollisions();
 
 	//Update the bullets.
 	ProjectileManager::Instance()->UpdateProjectiles(deltaTime);
@@ -102,8 +100,8 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	ProjectileManager::Instance()->CheckForCollisions(TankManager::Instance()->GetTanks());
 
 	//Update the pickups.
-	//PickUpManager::Instance()->UpdatePickUps(deltaTime);
-	//PickUpManager::Instance()->CheckForCollisions(TankManager::Instance()->GetTanks());
+	PickUpManager::Instance()->UpdatePickUps(deltaTime);
+	PickUpManager::Instance()->CheckForCollisions(TankManager::Instance()->GetTanks());
 
 }
 

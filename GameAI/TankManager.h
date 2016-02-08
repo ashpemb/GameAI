@@ -28,6 +28,7 @@ public:
 	vector<BaseTank*>	GetTanks()									{return mTanks;}
 
 	vector<BaseTank*>	GetVisibleTanks(BaseTank* lookingTank);
+	vector<BaseTank*>	GetAudibleTanks(BaseTank* hearingTank);
 	void				UpdateTanks(float deltaTime, SDL_Event e);
 	void				RenderTanks();
 

@@ -32,6 +32,8 @@ public:
 	void CheckForCollisions(vector<BaseTank*> listOfObjects);
 	void CheckForCollisions(vector<GameObject*> listOfObjects);
 
+	vector<GameObject*> GetVisibleMines(BaseTank* lookingTank);
+
 	//---------------------------------------------------------------
 private:
 	ProjectileManager();

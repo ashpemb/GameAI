@@ -3,9 +3,6 @@
 
 #include <limits>
 
-//Set waypoints visible.
-//#define WAYPOINTS_VISIBLE
-
 //Useful constants.
 const int     MaxInt    = (std::numeric_limits<int>::max)();
 const double  MaxDouble = (std::numeric_limits<double>::max)();
@@ -64,5 +61,9 @@ const float		kRocketSpeed			= 250.0f;
 //Tank details.
 const float		kFieldOfView			= 0.85f;
 const float		kFieldOfViewLength		= 250.0f;
+
+const float		kAudioLargeRadius		= 60.0f;
+const float		kAudioMediumRadius		= 45.0f;
+const float		kAudioSmallRadius		= 25.0f;
 
 #endif //CONSTANTS_H

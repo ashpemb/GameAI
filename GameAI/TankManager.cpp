@@ -185,9 +185,13 @@ BaseTank* TankManager::GetTankObject(SDL_Renderer* renderer, TankSetupDetails de
 		ControlledTank* newControlledTank = new ControlledTank(renderer, details);
 		newBaseTank = (BaseTank*)newControlledTank;
 	}
+	if(details.StudentName == "StillTank")
+	{
+		BaseTank* newTank = new BaseTank(renderer, details);
+		newBaseTank = (BaseTank*)newTank;
+	}
 
-
-	else if (details.StudentName == "AshPemberton")
+	if (details.StudentName == "AshPemberton")
 	{
 		P016671eTank* newControlledTank = new P016671eTank(renderer, details);
 		newBaseTank = (BaseTank*)newControlledTank;
@@ -276,6 +280,32 @@ vector<BaseTank*>	TankManager::GetVisibleTanks(BaseTank* lookingTank)
 	}
 
 	return mVisibleTanks;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+vector<BaseTank*>	TankManager::GetAudibleTanks(BaseTank* hearingTank)
+{
+	vector<BaseTank*> mAudibleTanks;
+
+	for(unsigned int i = 0; i < mTanks.size(); i++)
+	{
+		//Don't test self.
+		if(mTanks[i] != hearingTank)
+		{
+			Vector2D vecToTarget = hearingTank->GetCentrePosition()-mTanks[i]->GetCentrePosition();
+			double vecToTargetLength = vecToTarget.Length();
+
+			//If tank is too far away then it can't be seen.
+			if(vecToTargetLength < mTanks[i]->GetNoiseRadius()+hearingTank->GetHearingRadius())
+			{
+				mAudibleTanks.push_back(mTanks[i]);
+				cout << "Can hear you!!  " << mTanks[i]->GetTankName() << endl;
+			}
+		}
+	}
+
+	return mAudibleTanks;
 }
 
 //--------------------------------------------------------------------------------------------------

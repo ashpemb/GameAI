@@ -37,6 +37,10 @@ public:
 	double			GetMaxSpeed()											{return mMaxSpeed;}
 	double			GetMaxForce()											{return mMaxForce;}
 	double			GetMaxTurnRate()										{return mMaxTurnRate;}
+	string			GetTankName()											{return mStudentName;}
+
+	float			GetHearingRadius()										{return mHearingRadius;}
+	float			GetNoiseRadius()										{return mNoiseRadius;}
 
 	void			SetPosition(Vector2D newPosition)						{mPosition = newPosition;}
 	Vector2D		GetPointAtFrontOfTank();
@@ -137,6 +141,8 @@ private:
 
 	bool				mAlive;
 
+	Texture2D*			mNoiseTexture;
+	Texture2D*			mHearingTexture;
 	//---------------------------------------------------------------
 protected:
 	BASE_TANK_STATE		mCurrentState;
@@ -152,9 +158,13 @@ protected:
 	double				mMaxForce;
 	double				mMaxTurnRate;	
 
+	float				mHearingRadius;
+	float				mNoiseRadius;
+
 	Vector2D			mManFireDirection;
 
 	vector<BaseTank*>	mTanksICanSee;
+	vector<BaseTank*>	mTanksICanHear;
 };
 
 //---------------------------------------------------------------

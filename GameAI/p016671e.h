@@ -22,9 +22,6 @@ public:
 	void Update(float deltaTime, SDL_Event e);
 
 
-	void SeekToMouse(float deltaTime);
-	void FleeFromMouse(float deltaTime);
-
 	//---------------------------------------------------------------
 protected:
 	void	MoveInHeadingDirection(float deltaTime);

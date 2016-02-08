@@ -74,6 +74,34 @@ BaseTank::BaseTank(SDL_Renderer* renderer, TankSetupDetails details)
 
 	mStudentName			= details.StudentName;
 	mAlive					= true;
+
+	mHearingTexture			= new Texture2D(renderer);
+	mNoiseTexture			= new Texture2D(renderer);
+
+	//Set up audio / noise image sizes.
+	switch(mTankType)
+	{
+		case TANK_SMALL:
+			mNoiseRadius = kAudioSmallRadius;
+			mNoiseTexture->LoadFromFile(kSmallNoisePath);
+			mHearingRadius = kAudioLargeRadius;
+			mHearingTexture->LoadFromFile(kLargeAudioPath);
+		break;
+
+		case TANK_MEDIUM:
+			mNoiseRadius = kAudioMediumRadius;
+			mNoiseTexture->LoadFromFile(kMediumNoisePath);
+			mHearingRadius = kAudioMediumRadius;
+			mHearingTexture->LoadFromFile(kMediumAudioPath);
+		break;
+
+		case TANK_LARGE:
+			mNoiseRadius = kAudioLargeRadius;
+			mNoiseTexture->LoadFromFile(kLargeNoisePath);
+			mHearingRadius = kAudioSmallRadius;
+			mHearingTexture->LoadFromFile(kSmallAudioPath);
+		break;
+	}
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -95,6 +123,11 @@ BaseTank::~BaseTank()
 	}
 
 	mTanksICanSee.clear();
+
+	delete mHearingTexture;
+	mHearingTexture = NULL;
+	delete mNoiseTexture;
+	mNoiseTexture = NULL;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -224,7 +257,9 @@ void BaseTank::Update(float deltaTime, SDL_Event e)
 		break;
 	}
 
-	mTanksICanSee = TankManager::Instance()->GetVisibleTanks(this);
+	mTanksICanSee  = TankManager::Instance()->GetVisibleTanks(this);
+	mTanksICanHear = TankManager::Instance()->GetAudibleTanks(this);
+
 	MoveInHeadingDirection(deltaTime);
 
 }
@@ -233,6 +268,12 @@ void BaseTank::Update(float deltaTime, SDL_Event e)
 
 void BaseTank::Render()
 {
+#ifdef AUDIO_VISIBLE
+	//Draw the noise radius.
+	Vector2D AudioPosition = Vector2D(GetCentrePosition().x - mNoiseTexture->GetWidth()*0.5f, GetCentrePosition().y - mNoiseTexture->GetHeight()*0.5f);
+	mNoiseTexture->Render(AudioPosition, mRotationAngle);
+#endif	
+
 	//Call parent render function.
 	GameObject::Render();
 
@@ -250,6 +291,11 @@ void BaseTank::Render()
 		mCannonSpritesheet->Render(GetCurrentCannonSprite(), destRect, SDL_FLIP_HORIZONTAL, mRotationAngle); 
 	}
 
+#ifdef AUDIO_VISIBLE
+	//Draw the hearing radius.
+	AudioPosition = Vector2D(GetCentrePosition().x - mHearingTexture->GetWidth()*0.5f, GetCentrePosition().y - mHearingTexture->GetHeight()*0.5f);
+	mHearingTexture->Render(AudioPosition, mRotationAngle);
+#endif	
 	//Draw the man image.
 	SDL_Rect destRect = {(int)(mPosition.x+mManOffset.x), (int)(mPosition.y+mManOffset.y), mManSingleSpriteWidth, mManSingleSpriteHeight};
 	mManSpritesheet->Render(GetCurrentManSprite(), destRect, mManRotationAngle); 
@@ -368,7 +414,7 @@ SDL_Rect BaseTank::GetCurrentCannonSprite()
 
 void BaseTank::MoveInHeadingDirection(float deltaTime)
 {
-	cout << "BASETANK: Must override MoveInHeadingDirection." << endl;
+	//cout << "BASETANK: Must override MoveInHeadingDirection." << endl;
 }
 
 //--------------------------------------------------------------------------------------------------

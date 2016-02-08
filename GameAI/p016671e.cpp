@@ -16,7 +16,8 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mManKeyDown			= false;
 	mFireKeyDown		= false;
 	steering = new SteeringP016671e();
-	steering->FleeOn();
+	steering->SeekMouseOn();
+	//steering->FleeMouse();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -39,25 +40,24 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 {
 	switch (steering->GetState())
 	{
-	case SEEK:
+	case SEEKTOMOUSE:
 		switch (e.type)
 		{
 		case SDL_MOUSEBUTTONDOWN:
 			mMouseX = e.button.x;
 			mMouseY = e.button.y;
 
-			//cout << mMouseX << ":" << mMouseY << endl;
 			cursorPos = { mMouseX, mMouseY };
 
-			SeekToMouse(deltaTime);
+			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
 			break;
 		}
 		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
 		{
-			SeekToMouse(deltaTime);
+			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
 		}
 		break;
-	case FLEE:
+	case FLEEFROMMOUSE:
 		switch (e.type)
 		{
 		case SDL_MOUSEBUTTONDOWN:
@@ -66,15 +66,16 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 
 			cursorPos = { mMouseX, mMouseY };
 
-			FleeFromMouse(deltaTime);
+			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
 			break;
 		}
 		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
 		{
-			FleeFromMouse(deltaTime);
+			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
 		}
 		break;
 	}
+
 	//Call parent update.
 	BaseTank::Update(deltaTime, e);
 }
@@ -84,7 +85,7 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 void P016671eTank::MoveInHeadingDirection(float deltaTime)
 {
 	//Get the force that propels in current heading.
-	Vector2D force = (mHeading*mCurrentSpeed)-mVelocity;
+	Vector2D force = steering->GetForce();
 
 	//Acceleration = Force/Mass
 	Vector2D acceleration = force/GetMass();
@@ -110,17 +111,3 @@ void P016671eTank::MoveInHeadingDirection(float deltaTime)
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void P016671eTank::SeekToMouse(float deltaTime)
-{
-	Vector2D combinedForce = steering->Seek(cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
-	mVelocity += combinedForce;
-	MoveInHeadingDirection(deltaTime);
-}
-
-void P016671eTank::FleeFromMouse(float deltaTime)
-{
-	Vector2D combinedForce = steering->Seek(cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
-	mVelocity -= combinedForce;
-	MoveInHeadingDirection(deltaTime);
-}

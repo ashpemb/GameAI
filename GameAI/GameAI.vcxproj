@@ -120,11 +120,12 @@
     <Library Include="SDL\SDL2_mixer.lib" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="XML Data Files\GameAI.xml" />
-    <Xml Include="XML Data Files\GameAIOneBuilding.xml" />
-    <Xml Include="XML Data Files\TankData.xml">
+    <Xml Include="XML Data Files\Arena.xml" />
+    <Xml Include="XML Data Files\GameAI.xml">
       <SubType>Designer</SubType>
     </Xml>
+    <Xml Include="XML Data Files\GameAIOneBuilding.xml" />
+    <Xml Include="XML Data Files\TankData.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

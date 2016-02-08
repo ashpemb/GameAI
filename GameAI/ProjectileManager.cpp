@@ -254,3 +254,60 @@ void ProjectileManager::SetUpIndestructibleMines()
 }
 
 //--------------------------------------------------------------------------------------------------
+
+vector<GameObject*> ProjectileManager::GetVisibleMines(BaseTank* lookingTank)
+{
+	vector<GameObject*> mines;
+
+	for(unsigned int i = 0; i < mInstance->mProjectiles.size(); i++)
+	{
+		GameObject* currentProjectile = mInstance->mProjectiles.at(i);
+		if(currentProjectile->GetGameObjectType() == GAMEOBJECT_MINE)
+		{
+			Vector2D heading = lookingTank->GetHeading();
+			heading.Normalize();
+			Vector2D vecToTarget = lookingTank->GetCentrePosition()-currentProjectile->GetCentralPosition();
+			double vecToTargetLength = vecToTarget.Length();
+
+			//If Mine is too far away then it can't be seen.
+			if(vecToTargetLength < kFieldOfViewLength)
+			{
+				vecToTarget.Normalize();
+				//cout << "Heading x = " << heading.x << " y = " << heading.y << endl;
+				double dotProduct = heading.Dot(vecToTarget);
+				//cout << "dot = " << dotProduct << endl;
+				if(dotProduct > kFieldOfView)
+				{
+					Vector2D point1 = lookingTank->GetCentralPosition() + (vecToTarget*(vecToTargetLength*0.33f));
+					Vector2D point2 = lookingTank->GetCentralPosition() + (vecToTarget*(vecToTargetLength*0.5f));
+					Vector2D point3 = lookingTank->GetCentralPosition() + (vecToTarget*(vecToTargetLength*0.66f));
+
+					//Mine is within fov, but is there a building in the way?
+					for(unsigned int j = 0; j < ObstacleManager::Instance()->GetObstacles().size(); j++)
+					{
+						GameObject* currentObstacle = ObstacleManager::Instance()->GetObstacles().at(j);
+		
+						//Check if we have collided with this obstacle.
+						if( !Collisions::Instance()->PointInBox(point1, currentObstacle->GetAdjustedBoundingBox()) &&
+							!Collisions::Instance()->PointInBox(point2, currentObstacle->GetAdjustedBoundingBox()) &&
+							!Collisions::Instance()->PointInBox(point3, currentObstacle->GetAdjustedBoundingBox()) )
+						{
+							//Add mine projectile to the list that will be returned.
+							mines.push_back(currentProjectile);
+
+							//cout << "Can see mine!!" << endl;
+
+							//Get out of the obstacle check.
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//Return mines.
+	return mines;
+}
+
+//--------------------------------------------------------------------------------------------------

@@ -175,5 +175,8 @@
     <Xml Include="XML Data Files\TankData.xml">
       <Filter>XML Data Files</Filter>
     </Xml>
+    <Xml Include="XML Data Files\Arena.xml">
+      <Filter>XML Data Files</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

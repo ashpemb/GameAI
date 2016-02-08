@@ -6,7 +6,8 @@
 
 using namespace::std;
 
-#define WAYPOINTS_VISIBLE 1
+#define WAYPOINTS_VISIBLE
+#define AUDIO_VISIBLE 
 
 const string kTilemapPath			= "XML Data Files/GameAI.xml";
 const string kScorePath				= "Scores/Scores.txt";
@@ -20,6 +21,13 @@ const string kHealthPickUpPath		= "Images/CrateHealth.png";
 const string kRocketPickUpPath		= "Images/CrateRockets.png";
 const string kBulletPickUpPath		= "Images/CrateBullets.png";
 const string kMinePickUpPath		= "Images/CrateMines.png";
+
+const string kLargeAudioPath		= "Images/AudioLarge.png";
+const string kMediumAudioPath		= "Images/AudioMedium.png";
+const string kSmallAudioPath		= "Images/AudioSmall.png";
+const string kLargeNoisePath		= "Images/NoiseLarge.png";
+const string kMediumNoisePath		= "Images/NoiseMedium.png";
+const string kSmallNoisePath		= "Images/NoiseSmall.png";
 
 enum Deceleration
 { 

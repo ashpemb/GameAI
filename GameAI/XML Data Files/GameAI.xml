@@ -628,12 +628,12 @@
     <property name="ID" value="0"/>
    </properties>
   </object>
-  <object name="Obstacle" x="321" y="62" width="127" height="127">
+  <object name="Obstacle" x="300" y="62" width="127" height="127">
    <properties>
     <property name="ID" value="1"/>
    </properties>
   </object>
-  <object name="Obstacle" x="129" y="255" width="253" height="125">
+  <object name="Obstacle" x="120" y="255" width="253" height="125">
    <properties>
     <property name="ID" value="2"/>
    </properties>
@@ -643,7 +643,7 @@
     <property name="ID" value="3"/>
    </properties>
   </object>
-  <object name="Obstacle" x="768" y="64" width="126" height="286">
+  <object name="Obstacle" x="750" y="64" width="126" height="286">
    <properties>
     <property name="ID" value="4"/>
    </properties>
@@ -682,7 +682,7 @@
     <property name="ID" value="1"/>
    </properties>
   </object>
-  <object name="Waypoint" x="450" y="16" width="61" height="5">
+  <object name="Waypoint" x="470" y="16" width="61" height="5">
    <properties>
     <property name="Connections" value="1,3,16"/>
     <property name="ID" value="2"/>
@@ -700,13 +700,13 @@
     <property name="ID" value="4"/>
    </properties>
   </object>
-  <object name="Waypoint" x="260" y="194" width="61" height="5">
+  <object name="Waypoint" x="260" y="210" width="61" height="5">
    <properties>
     <property name="Connections" value="5,1,16"/>
     <property name="ID" value="6"/>
    </properties>
   </object>
-  <object name="Waypoint" x="14" y="176" width="61" height="5">
+  <object name="Waypoint" x="14" y="210" width="61" height="5">
    <properties>
     <property name="Connections" value="0,6,7"/>
     <property name="ID" value="5"/>
@@ -754,7 +754,7 @@
     <property name="ID" value="13"/>
    </properties>
   </object>
-  <object name="Waypoint" x="886" y="391" width="61" height="5">
+  <object name="Waypoint" x="920" y="391" width="61" height="5">
    <properties>
     <property name="Connections" value="4,15"/>
     <property name="ID" value="14"/>
@@ -766,11 +766,17 @@
     <property name="ID" value="15"/>
    </properties>
   </object>
-  <object name="Waypoint" x="447" y="186" width="61" height="5">
+  <object name="Waypoint" x="470" y="210" width="61" height="5">
    <properties>
     <property name="Connections" value="2,6,12"/>
     <property name="ID" value="16"/>
    </properties>
   </object>
+   <object name="Waypoint" x="920" y="610" width="61" height="5">
+     <properties>
+       <property name="Connections" value="14,13"/>
+       <property name="ID" value="17"/>
+     </properties>
+   </object>
  </objectgroup>
 </map>
