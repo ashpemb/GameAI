@@ -17,7 +17,8 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mFireKeyDown		= false;
 	steering = new SteeringP016671e();
 	//steering->SeekMouseOn();
-	steering->FleeMouse();
+	//steering->FleeMouse();
+	steering->ArriveOn();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -74,6 +75,32 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
 		}
 		break;
+	case ARRIVE:
+		switch (e.type)
+		{
+		case SDL_MOUSEBUTTONDOWN:
+			mMouseX = e.button.x;
+			mMouseY = e.button.y;
+
+			cursorPos = { mMouseX, mMouseY };
+			Vector2D click = cursorPos - GetCentrePosition();
+			if (click.Length() > 5)
+			{
+				steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
+			}
+			else
+			{
+				mVelocity.x = 0;
+				mVelocity.y = 0;
+				
+			}
+			break;
+		}
+		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
+		{
+			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
+		}
+		break;
 	}
 
 	//Call parent update.
@@ -106,7 +133,8 @@ void P016671eTank::MoveInHeadingDirection(float deltaTime)
 	if (ahead.x == 0.0f && ahead.y == 0.0f)
 		ahead = mHeading;
 	Vec2DNormalize(ahead);
-
+	
+	if (steering->GetAllowRotate() == true)
 	RotateHeadingToFacePosition(GetCentrePosition() + ahead * 10.0f);
 }
 
