@@ -4,6 +4,7 @@ SteeringP016671e::SteeringP016671e()
 {
 	fleeRadius = 200;
 	arriveRadius = 200;
+	DoAllowRotate();
 }
 Vector2D SteeringP016671e::Seek(Vector2D targetPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
 {
@@ -58,6 +59,11 @@ Vector2D SteeringP016671e::ArriveAtMouse(float deltaTime, Vector2D cursorPos, Ve
 	return Vector2D(0, 0);
 }
 
+//Vector2D SteeringP016671e::PursuitMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
+//{
+//
+//}
+
 Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
 {
 	combinedForce = Vector2D(0, 0);
@@ -71,6 +77,9 @@ Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, V
 		break;
 	case ARRIVE:
 		combinedForce += ArriveAtMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
+		break;
+	case PURSUIT:
+		combinedForce += SeekToMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
 		break;
 	}
 	return combinedForce;

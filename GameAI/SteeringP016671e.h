@@ -20,6 +20,7 @@ public:
 	void SeekMouseOn(){ tankState = SEEKTOMOUSE; }
 	void FleeMouse(){ tankState = FLEEFROMMOUSE; }
 	void ArriveOn(){ tankState = ARRIVE; }
+	void PursuitOn(){ tankState = PURSUIT; }
 	bool ObsAvoidOn(){ return isObsAvoidOn; }
 	int GetState(){ return tankState; }
 	bool GetAllowRotate(){ return allowRotate; }
@@ -32,6 +33,7 @@ public:
 	Vector2D FleeFromMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
 	/*Vector2D ObstacleAvoid(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);*/
 	Vector2D ArriveAtMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
+	Vector2D PursuitMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
 	~SteeringP016671e();
 private:
 	int tankState;

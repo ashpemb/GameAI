@@ -18,7 +18,8 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	steering = new SteeringP016671e();
 	//steering->SeekMouseOn();
 	//steering->FleeMouse();
-	steering->ArriveOn();
+	//steering->ArriveOn();
+	steering->PursuitOn();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -94,6 +95,23 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 				mVelocity.y = 0;
 				
 			}
+			break;
+		}
+		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
+		{
+			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
+		}
+		break;
+	case PURSUIT:
+		switch (e.type)
+		{
+		case SDL_MOUSEMOTION:
+			mMouseX = e.motion.x;
+			mMouseY = e.motion.y;
+
+			cursorPos = { mMouseX, mMouseY };
+
+			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
 			break;
 		}
 		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
