@@ -16,10 +16,10 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mManKeyDown			= false;
 	mFireKeyDown		= false;
 	steering = new SteeringP016671e();
-	//steering->SeekMouseOn();
-	//steering->FleeMouse();
-	//steering->ArriveOn();
-	steering->PursuitOn();
+	//steering->SeekOn();
+	//steering->FleeOn();
+	steering->ArriveOn();
+	//steering->PursuitOn();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -40,9 +40,8 @@ void P016671eTank::ChangeState(BASE_TANK_STATE newState)
 
 void P016671eTank::Update(float deltaTime, SDL_Event e)
 {
-	switch (steering->GetState())
+	if (steering->GetPursuit() != true)
 	{
-	case SEEKTOMOUSE:
 		switch (e.type)
 		{
 		case SDL_MOUSEBUTTONDOWN:
@@ -58,51 +57,15 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 		{
 			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
 		}
-		break;
-	case FLEEFROMMOUSE:
-		switch (e.type)
+		Vector2D click = cursorPos - GetCentrePosition();
+		if (steering->GetArrive() == true && click.Length() < 1)
 		{
-		case SDL_MOUSEBUTTONDOWN:
-			mMouseX = e.button.x;
-			mMouseY = e.button.y;
-
-			cursorPos = { mMouseX, mMouseY };
-
-			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
-			break;
+			mVelocity.x = 0;
+			mVelocity.y = 0;
 		}
-		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
-		{
-			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
-		}
-		break;
-	case ARRIVE:
-		switch (e.type)
-		{
-		case SDL_MOUSEBUTTONDOWN:
-			mMouseX = e.button.x;
-			mMouseY = e.button.y;
-
-			cursorPos = { mMouseX, mMouseY };
-			Vector2D click = cursorPos - GetCentrePosition();
-			if (click.Length() > 5)
-			{
-				steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
-			}
-			else
-			{
-				mVelocity.x = 0;
-				mVelocity.y = 0;
-				
-			}
-			break;
-		}
-		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
-		{
-			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
-		}
-		break;
-	case PURSUIT:
+	}
+	else
+	{
 		switch (e.type)
 		{
 		case SDL_MOUSEMOTION:
@@ -118,7 +81,6 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 		{
 			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
 		}
-		break;
 	}
 
 	//Call parent update.

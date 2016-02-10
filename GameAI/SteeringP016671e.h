@@ -15,14 +15,16 @@ class SteeringP016671e
 {
 public:
 	SteeringP016671e();
-	void SeekOn(){ tankState = SEEK; }
-	void FleeOn(){ tankState = FLEE; }
-	void SeekMouseOn(){ tankState = SEEKTOMOUSE; }
-	void FleeMouse(){ tankState = FLEEFROMMOUSE; }
-	void ArriveOn(){ tankState = ARRIVE; }
-	void PursuitOn(){ tankState = PURSUIT; }
-	bool ObsAvoidOn(){ return isObsAvoidOn; }
-	int GetState(){ return tankState; }
+	void SeekOn(){ isSeekOn = true; }
+	void FleeOn(){ isFleeOn = true; }
+	void ArriveOn(){ isArriveOn = true; }
+	void PursuitOn(){ isPursuitOn = true; }
+	bool ObsAvoidOn(){ isObsAvoidOn = true; }
+	bool GetSeek(){ return isSeekOn; }
+	bool GetFlee(){ return isFleeOn; }
+	bool GetArrive(){ return isArriveOn; }
+	bool GetPursuit(){ return isPursuitOn; }
+	bool GetObsAvoid(){ return isObsAvoidOn; }
 	bool GetAllowRotate(){ return allowRotate; }
 	void DoAllowRotate(){ allowRotate = true; }
 	void DontAllowRotate(){ allowRotate = false; }
@@ -40,7 +42,11 @@ private:
 	Vector2D combinedForce;
 	double fleeRadius;
 	double arriveRadius;
-	double deceleration = 4;
-	bool isObsAvoidOn;
+	double deceleration = 2;
+	bool isObsAvoidOn = false;
+	bool isFleeOn = false;
+	bool isSeekOn = false;
+	bool isArriveOn = false;
+	bool isPursuitOn = false;
 	bool allowRotate;
 };

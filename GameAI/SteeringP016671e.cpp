@@ -20,14 +20,14 @@ Vector2D SteeringP016671e::SeekToMouse(float deltaTime, Vector2D cursorPos, Vect
 
 Vector2D SteeringP016671e::FleeFromMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
 {
-	Vector2D force = Seek(cursorPos, tankPos, velocity, maxSpeed);
+
 	Vector2D click = cursorPos - tankPos;
-	if (click.Length() > fleeRadius)
+	if (click.Length() < fleeRadius)
 	{
-		force.x = 0.0f;
-		force.y = 0.0f;
+		Vector2D force = Seek(cursorPos, tankPos, velocity, maxSpeed);
+		return force;
 	}
-	return force;
+	return Vector2D(0, 0);
 }
 
 //Vector2D SteeringP016671e::ObstacleAvoid(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
@@ -40,7 +40,7 @@ Vector2D SteeringP016671e::ArriveAtMouse(float deltaTime, Vector2D cursorPos, Ve
 	DoAllowRotate();
 	Vector2D click = cursorPos - tankPos;
 	double distance = click.Length();
-	if (distance > 5)
+	if (distance > 20)
 	{
 		double speed = distance / deceleration;
 		speed = min(speed, maxSpeed);
@@ -67,20 +67,17 @@ Vector2D SteeringP016671e::ArriveAtMouse(float deltaTime, Vector2D cursorPos, Ve
 Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
 {
 	combinedForce = Vector2D(0, 0);
-	switch (tankState)
+	if (isSeekOn == true)
 	{
-	case SEEKTOMOUSE:
 		combinedForce += SeekToMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
-		break;
-	case FLEEFROMMOUSE:
+	}
+	if (isFleeOn == true)
+	{
 		combinedForce -= FleeFromMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
-		break;
-	case ARRIVE:
+	}
+	if (isArriveOn == true)
+	{
 		combinedForce += ArriveAtMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
-		break;
-	case PURSUIT:
-		combinedForce += SeekToMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
-		break;
 	}
 	return combinedForce;
 }
