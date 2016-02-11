@@ -34,7 +34,8 @@ Vector2D SteeringP016671e::FleeFromMouse(float deltaTime, Vector2D cursorPos, Ve
 
 Vector2D SteeringP016671e::ObstacleAvoid(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
 {
-	
+
+	return Vector2D(0, 0);
 }
 
 Vector2D SteeringP016671e::ArriveAtMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
@@ -72,7 +73,7 @@ Vector2D SteeringP016671e::PursuitMouse(float deltaTime, Vector2D cursorPos, Vec
 	Vector2D pursuitPoint = cursorPos;
 	if (heading.x != 0 && heading.y != 0)
 	{
-		pursuitPoint = cursorPos * (0.5 * heading);
+		pursuitPoint = cursorPos * (/*0.5 * */heading);
 	}
 	
 	Vector2D force = Seek(pursuitPoint, tankPos, velocity, maxSpeed);
@@ -82,19 +83,19 @@ Vector2D SteeringP016671e::PursuitMouse(float deltaTime, Vector2D cursorPos, Vec
 Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
 {
 	combinedForce = Vector2D(0, 0);
-	if (isSeekOn == true)
+	if (isSeekOn)
 	{
 		combinedForce += SeekToMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
 	}
-	if (isFleeOn == true)
+	if (isFleeOn)
 	{
 		combinedForce -= FleeFromMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
 	}
-	if (isArriveOn == true)
+	if (isArriveOn)
 	{
 		combinedForce += ArriveAtMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
 	}
-	if (isPursuitOn == true)
+	if (isPursuitOn)
 	{
 		combinedForce += PursuitMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
 	}
