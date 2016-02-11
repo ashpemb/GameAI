@@ -28,6 +28,7 @@ public:
 	bool GetAllowRotate(){ return allowRotate; }
 	void DoAllowRotate(){ allowRotate = true; }
 	void DontAllowRotate(){ allowRotate = false; }
+	void SetLastPos(Vector2D pos){ lastPos = pos; }
 	Vector2D GetForce(){ return combinedForce; }
 	Vector2D CalculateForce(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
 	Vector2D Seek(Vector2D targetPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
@@ -40,6 +41,7 @@ public:
 private:
 	int tankState;
 	Vector2D combinedForce;
+	Vector2D lastPos;
 	double fleeRadius;
 	double arriveRadius;
 	double deceleration = 2;

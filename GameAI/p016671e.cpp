@@ -18,8 +18,8 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	steering = new SteeringP016671e();
 	//steering->SeekOn();
 	//steering->FleeOn();
-	steering->ArriveOn();
-	//steering->PursuitOn();
+	//steering->ArriveOn();
+	steering->PursuitOn();
 }
 
 //--------------------------------------------------------------------------------------------------
