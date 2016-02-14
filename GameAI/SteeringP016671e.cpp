@@ -8,46 +8,62 @@ SteeringP016671e::SteeringP016671e()
 	lastPos.y = 0;
 	DoAllowRotate();
 }
-Vector2D SteeringP016671e::Seek(Vector2D targetPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
+Vector2D SteeringP016671e::Seek(Vector2D targetPos, BaseTank * Tank)
 {
-	Vector2D VectorToTarget = Vec2DNormalize(targetPos - tankPos) * maxSpeed;
-	return (VectorToTarget - velocity);
+	Vector2D VectorToTarget = Vec2DNormalize(targetPos - Tank->GetCentrePosition()) * Tank->GetMaxSpeed();
+	return (VectorToTarget - Tank->GetVelocity());
 }
 
-Vector2D SteeringP016671e::SeekToMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
+Vector2D SteeringP016671e::SeekToMouse(float deltaTime, Vector2D cursorPos, BaseTank * Tank)
 {
-	Vector2D force = Seek(cursorPos, tankPos, velocity, maxSpeed);
+	Vector2D force = Seek(cursorPos, Tank);
 	return force;
 }
 
-Vector2D SteeringP016671e::FleeFromMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
+Vector2D SteeringP016671e::FleeFromMouse(float deltaTime, Vector2D cursorPos, BaseTank * Tank)
 {
 
-	Vector2D click = cursorPos - tankPos;
+	Vector2D click = cursorPos - Tank->GetCentrePosition();
 	if (click.Length() < fleeRadius)
 	{
-		Vector2D force = Seek(cursorPos, tankPos, velocity, maxSpeed);
+		Vector2D force = Seek(cursorPos, Tank);
 		return force;
 	}
 	return Vector2D(0, 0);
 }
 
-Vector2D SteeringP016671e::ObstacleAvoid(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
+Vector2D SteeringP016671e::ObstacleAvoid(float deltaTime, Vector2D cursorPos, BaseTank * Tank, const std::vector<GameObject*>& ObstacleM)
 {
+	
+	Vector2D AvoidForce(0, 0);
+	std::vector<GameObject*>::const_iterator cur0b = ObstacleM.begin();
 
-	return Vector2D(0, 0);
+	Vector2D AheadCheckLeft = Tank->GetCentrePosition() + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
+	Vector2D AheadCheckRight = Tank->GetCentrePosition() + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
+
+	for (int i = 0; i < ObstacleM.size(); i++)
+	{
+
+		if (Collisions::Instance()->PointInBox(AheadCheckLeft, ObstacleM[i]->GetAdjustedBoundingBox())) // SEEMS VERY WEAK FOR SOME REASON
+		{
+			AvoidForce = AheadCheckLeft - ObstacleM[i]->GetCentralPosition();
+			AvoidForce = Vec2DNormalize(AvoidForce) * Tank->GetMaxForce();
+		}
+	}
+	return AvoidForce;
+
 }
 
-Vector2D SteeringP016671e::ArriveAtMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
+Vector2D SteeringP016671e::ArriveAtMouse(float deltaTime, Vector2D cursorPos, BaseTank * Tank)
 {
 	DoAllowRotate();
-	Vector2D click = cursorPos - tankPos;
+	Vector2D click = cursorPos - Tank->GetCentrePosition();
 	double distance = click.Length();
 	if (distance > 20)
 	{
 		double speed = distance / deceleration;
-		speed = min(speed, maxSpeed);
-		Vector2D force = Seek(cursorPos, tankPos, velocity, speed);
+		speed = min(speed, Tank->GetMaxSpeed());
+		Vector2D force = Seek(cursorPos, Tank);
 		
 		if (distance < 5)
 		{
@@ -62,7 +78,7 @@ Vector2D SteeringP016671e::ArriveAtMouse(float deltaTime, Vector2D cursorPos, Ve
 	return Vector2D(0, 0);
 }
 
-Vector2D SteeringP016671e::PursuitMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
+Vector2D SteeringP016671e::PursuitMouse(float deltaTime, Vector2D cursorPos, BaseTank * Tank)
 {
 	if (lastPos.x == 0 && lastPos.y == 0)
 	{
@@ -76,28 +92,33 @@ Vector2D SteeringP016671e::PursuitMouse(float deltaTime, Vector2D cursorPos, Vec
 		pursuitPoint = cursorPos * (/*0.5 * */heading);
 	}
 	
-	Vector2D force = Seek(pursuitPoint, tankPos, velocity, maxSpeed);
+	Vector2D force = Seek(pursuitPoint, Tank);
 	return force;
 }
 
-Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed)
+Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, BaseTank * Tank)
 {
 	combinedForce = Vector2D(0, 0);
 	if (isSeekOn)
 	{
-		combinedForce += SeekToMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
+		combinedForce += SeekToMouse(deltaTime, cursorPos, Tank);
 	}
 	if (isFleeOn)
 	{
-		combinedForce -= FleeFromMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
+		combinedForce -= FleeFromMouse(deltaTime, cursorPos, Tank);
 	}
 	if (isArriveOn)
 	{
-		combinedForce += ArriveAtMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
+		combinedForce += ArriveAtMouse(deltaTime, cursorPos, Tank);
 	}
 	if (isPursuitOn)
 	{
-		combinedForce += PursuitMouse(deltaTime, cursorPos, tankPos, velocity, maxSpeed);
+		combinedForce += PursuitMouse(deltaTime, cursorPos, Tank);
+	}
+	if (isObsAvoidOn)
+	{
+		std::vector<GameObject*>& ObstacleM = ObstacleManager::Instance()->GetObstacles();
+		combinedForce += ObstacleAvoid(deltaTime, cursorPos, Tank, ObstacleM);
 	}
 	return combinedForce;
 }

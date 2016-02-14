@@ -1,5 +1,9 @@
 #include "Commons.h"
 #include "ObstacleManager.h"
+#include <SDL.h>
+#include <vector>
+#include "BaseTank.h"
+#include "Collisions.h"
 
 enum TANKSTATE {
 	SEEK,
@@ -20,7 +24,7 @@ public:
 	void FleeOn(){ isFleeOn = true; }
 	void ArriveOn(){ isArriveOn = true; }
 	void PursuitOn(){ isPursuitOn = true; }
-	bool ObsAvoidOn(){ isObsAvoidOn = true; }
+	void ObsAvoidOn(){ isObsAvoidOn = true; }
 	bool GetSeek(){ return isSeekOn; }
 	bool GetFlee(){ return isFleeOn; }
 	bool GetArrive(){ return isArriveOn; }
@@ -31,13 +35,13 @@ public:
 	void DontAllowRotate(){ allowRotate = false; }
 	void SetLastPos(Vector2D pos){ lastPos = pos; }
 	Vector2D GetForce(){ return combinedForce; }
-	Vector2D CalculateForce(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
-	Vector2D Seek(Vector2D targetPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
-	Vector2D SeekToMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
-	Vector2D FleeFromMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
-	Vector2D ObstacleAvoid(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
-	Vector2D ArriveAtMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
-	Vector2D PursuitMouse(float deltaTime, Vector2D cursorPos, Vector2D tankPos, Vector2D velocity, double maxSpeed);
+	Vector2D CalculateForce(float deltaTime, Vector2D cursorPos, BaseTank * Tank);
+	Vector2D Seek(Vector2D targetPos, BaseTank * Tank);
+	Vector2D SeekToMouse(float deltaTime, Vector2D cursorPos, BaseTank * Tank );
+	Vector2D FleeFromMouse(float deltaTime, Vector2D cursorPos, BaseTank * Tank);
+	Vector2D ObstacleAvoid(float deltaTime, Vector2D cursorPos, BaseTank * Tank, const std::vector<GameObject*>& ObstacleM);
+	Vector2D ArriveAtMouse(float deltaTime, Vector2D cursorPos, BaseTank * Tank);
+	Vector2D PursuitMouse(float deltaTime, Vector2D cursorPos, BaseTank * Tank);
 	~SteeringP016671e();
 private:
 	int tankState;
@@ -46,6 +50,7 @@ private:
 	double fleeRadius;
 	double arriveRadius;
 	double deceleration = 2;
+	double AvoidCheckDistance = 100;
 	bool isObsAvoidOn = false;
 	bool isFleeOn = false;
 	bool isSeekOn = false;

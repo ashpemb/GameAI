@@ -16,10 +16,11 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mManKeyDown			= false;
 	mFireKeyDown		= false;
 	steering = new SteeringP016671e();
-	//steering->SeekOn();
+	steering->ObsAvoidOn();
+	steering->SeekOn();
 	//steering->FleeOn();
 	//steering->ArriveOn();
-	steering->PursuitOn();
+	//steering->PursuitOn();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -50,12 +51,12 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 
 			cursorPos = { mMouseX, mMouseY };
 
-			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
+			steering->CalculateForce(deltaTime, cursorPos, this);
 			break;
 		}
 		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
 		{
-			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
+			steering->CalculateForce(deltaTime, cursorPos, this);
 		}
 		Vector2D click = cursorPos - GetCentrePosition();
 		if (steering->GetArrive() == true && click.Length() < 1)
@@ -74,12 +75,12 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 
 			cursorPos = { mMouseX, mMouseY };
 
-			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
+			steering->CalculateForce(deltaTime, cursorPos, this);
 			break;
 		}
 		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
 		{
-			steering->CalculateForce(deltaTime, cursorPos, GetCentrePosition(), GetVelocity(), GetMaxSpeed());
+			steering->CalculateForce(deltaTime, cursorPos, this);
 		}
 	}
 
