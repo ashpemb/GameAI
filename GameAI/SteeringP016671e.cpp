@@ -36,19 +36,28 @@ Vector2D SteeringP016671e::ObstacleAvoid(float deltaTime, Vector2D cursorPos, Ba
 {
 	
 	Vector2D AvoidForce(0, 0);
+	Vector2D AvoidLeft(0, 0);
+	Vector2D AvoidRight(0, 0);
 	std::vector<GameObject*>::const_iterator cur0b = ObstacleM.begin();
-
-	Vector2D AheadCheckLeft = Tank->GetCentrePosition() + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
-	Vector2D AheadCheckRight = Tank->GetCentrePosition() + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
+	Vector2D PosLeft = (Tank->GetCentrePosition() - (Tank->GetSide() * 10));
+	Vector2D PosRight = (Tank->GetCentrePosition() + (Tank->GetSide() * 10));
+	Vector2D AheadCheckLeft = PosLeft + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
+	Vector2D AheadCheckRight = PosRight + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
 
 	for (int i = 0; i < ObstacleM.size(); i++)
 	{
 
-		if (Collisions::Instance()->PointInBox(AheadCheckLeft, ObstacleM[i]->GetAdjustedBoundingBox())) // SEEMS VERY WEAK FOR SOME REASON
+		if (Collisions::Instance()->PointInBox(AheadCheckLeft, ObstacleM[i]->GetAdjustedBoundingBox()))
 		{
-			AvoidForce = AheadCheckLeft - ObstacleM[i]->GetCentralPosition();
-			AvoidForce = Vec2DNormalize(AvoidForce) * Tank->GetMaxForce();
+			AvoidLeft = AheadCheckLeft - ObstacleM[i]->GetCentralPosition();
+			AvoidLeft = Vec2DNormalize(AvoidLeft) * Tank->GetMaxForce();
 		}
+		if (Collisions::Instance()->PointInBox(AheadCheckRight, ObstacleM[i]->GetAdjustedBoundingBox()))
+		{
+			AvoidRight = AheadCheckLeft - ObstacleM[i]->GetCentralPosition();
+			AvoidRight = Vec2DNormalize(AvoidRight) * Tank->GetMaxForce();
+		}
+		AvoidForce += AvoidRight + AvoidLeft;
 	}
 	return AvoidForce;
 
