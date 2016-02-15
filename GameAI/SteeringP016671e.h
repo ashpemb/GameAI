@@ -47,10 +47,11 @@ private:
 	int tankState;
 	Vector2D combinedForce;
 	Vector2D lastPos;
+	double speed;
 	double fleeRadius;
 	double arriveRadius;
 	double deceleration = 2;
-	double AvoidCheckDistance = 100;
+	double AvoidCheckDistance = 50;
 	bool isObsAvoidOn = false;
 	bool isFleeOn = false;
 	bool isSeekOn = false;
