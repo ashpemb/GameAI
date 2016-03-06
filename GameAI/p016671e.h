@@ -5,6 +5,9 @@
 #include "SteeringP016671e.h"
 #include <SDL.h>
 #include "Commons.h"
+#include "Waypoint.h"
+#include "WaypointManager.h"
+#include "Pathfinding.h"
 
 
 
@@ -39,6 +42,11 @@ private:
 	Vector2D cursorPos;
 	float mMouseX;
 	float mMouseY;
+	vector<Vector2D> path;
+	Pathfinding* pathfinding;
+	int currentPath;
+	bool isPathfinding;
+	bool arrivedNode;
 };
 
 //---------------------------------------------------------------

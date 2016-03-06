@@ -140,6 +140,17 @@ Vector2D SteeringP016671e::PursuitMouse(float deltaTime, Vector2D cursorPos, Bas
 	return force;
 }
 
+Vector2D SteeringP016671e::FollowPath(float deltaTime, Vector2D destPos, BaseTank * Tank)
+{
+	Vector2D force = Seek(destPos, Tank);
+	return force;
+}
+
+void SteeringP016671e::AStarOff()
+{
+	isAStarOn = false;
+}
+
 Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, BaseTank * Tank)
 {
 	combinedForce = Vector2D(0, 0);
@@ -163,6 +174,10 @@ Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, B
 	{
 		std::vector<GameObject*>& ObstacleM = ObstacleManager::Instance()->GetObstacles();
 		combinedForce += ObstacleAvoid(deltaTime, cursorPos, Tank, ObstacleM);
+	}
+	if (isAStarOn)
+	{
+		combinedForce += (FollowPath(deltaTime, cursorPos, Tank) * 3);
 	}
 	return combinedForce;
 }

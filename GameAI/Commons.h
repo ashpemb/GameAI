@@ -9,7 +9,7 @@ using namespace::std;
 #define WAYPOINTS_VISIBLE
 #define AUDIO_VISIBLE 
 
-const string kTilemapPath			= "XML Data Files/GameAI.xml";
+const string kTilemapPath			= "XML Data Files/Arena.xml";
 const string kScorePath				= "Scores/Scores.txt";
 const string kTankPath				= "XML Data Files/TankData.xml";
 const string kBulletPath			= "Images/Bullet.png";
