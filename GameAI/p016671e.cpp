@@ -84,35 +84,11 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 
 			cursorPos = { mMouseX, mMouseY };
 
-			int distanceTank = 100;
-			Waypoint* tankWaypoint = WaypointManager::Instance()->GetWaypointWithID('0');
+			steering->SeekOff();
 
-			int distanceTarget = 100;
-			Waypoint* targetWaypoint = WaypointManager::Instance()->GetWaypointWithID('0');
+			Waypoint* tankWaypoint = findWaypoint(this->GetCentralPosition());
 
-			for each (Waypoint* node in WaypointManager::Instance()->GetAllWaypoints())
-			{
-				int x = abs(node->GetPosition().x - this->GetCentralPosition().x);
-				int y = abs(node->GetPosition().y - this->GetCentralPosition().y);
-				int distance = sqrt(x + y);
-
-				if (distance < distanceTank)
-				{
-					distanceTank = distance;
-					tankWaypoint = node;
-				}
-
-				x = abs(node->GetPosition().x - cursorPos.x);
-				y = abs(node->GetPosition().y - cursorPos.y);
-				distance = sqrt(x + y);
-
-				if (distance < distanceTarget)
-				{
-					distanceTarget = distance;
-					targetWaypoint = node;
-				}
-
-			}
+			Waypoint* targetWaypoint = findWaypoint(cursorPos);
 
 			path.clear();
 			currentPath = 0;
@@ -146,7 +122,9 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 					isPathfinding = false;
 					steering->AStarOff();
 					steering->Pathon();
-					cursorPos = { 0.0f, 0.0f };
+					steering->SeekOn();
+					steering->SeekToMouse(deltaTime, cursorPos, this);
+
 				}
 				steering->CalculateForce(deltaTime, path[currentPath], this);
 			}
@@ -180,37 +158,13 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 			mMouseY = e.button.y;
 
 			cursorPos = { mMouseX, mMouseY };
+			steering->SeekOff();
 			steering->AStarOn();
 			steering->Pathoff();
-			int distanceTank = 100;
-			Waypoint* tankWaypoint = WaypointManager::Instance()->GetWaypointWithID('0');
 
-			int distanceTarget = 100;
-			Waypoint* targetWaypoint = WaypointManager::Instance()->GetWaypointWithID('0');
+			Waypoint* tankWaypoint = findWaypoint(this->GetCentralPosition());
 
-			for each (Waypoint* node in WaypointManager::Instance()->GetAllWaypoints())
-			{
-				int x = abs(node->GetPosition().x - this->GetCentralPosition().x);
-				int y = abs(node->GetPosition().y - this->GetCentralPosition().y);
-				int distance = sqrt(x + y);
-
-				if (distance < distanceTank)
-				{
-					distanceTank = distance;
-					tankWaypoint = node;
-				}
-
-				x = abs(node->GetPosition().x - cursorPos.x);
-				y = abs(node->GetPosition().y - cursorPos.y);
-				distance = sqrt(x + y);
-
-				if (distance < distanceTarget)
-				{
-					distanceTarget = distance;
-					targetWaypoint = node;
-				}
-
-			}
+			Waypoint* targetWaypoint = findWaypoint(cursorPos);
 
 			path.clear();
 			currentPath = 0;
@@ -244,7 +198,8 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 				isPathfinding = false;
 				steering->AStarOff();
 				steering->Pathon();
-				cursorPos = { 0.0f, 0.0f };
+				steering->SeekOn();
+				steering->SeekToMouse(deltaTime, cursorPos, this);
 			}
 			steering->CalculateForce(deltaTime, path[currentPath], this);
 		}
@@ -291,3 +246,17 @@ void P016671eTank::MoveInHeadingDirection(float deltaTime)
 }
 
 //--------------------------------------------------------------------------------------------------
+
+Waypoint* P016671eTank::findWaypoint(Vector2D pos)
+{
+	vector<Waypoint*> allWaypoints = WaypointManager::Instance()->GetAllWaypoints();
+	Waypoint* closest = allWaypoints[0];
+	for (int i = 0; i < allWaypoints.size(); i++)
+	{
+		if (pos.Distance(allWaypoints[i]->GetPosition()) < pos.Distance(closest->GetPosition()))
+		{
+			closest = allWaypoints[i];
+		}
+	}
+	return closest;
+}

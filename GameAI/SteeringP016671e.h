@@ -21,8 +21,10 @@ class SteeringP016671e
 public:
 	SteeringP016671e();
 	void SeekOn(){ isSeekOn = true; }
+	void SeekOff(){ isSeekOn = false; }
 	void FleeOn(){ isFleeOn = true; }
 	void ArriveOn(){ isArriveOn = true; }
+	void ArriveOff(){ isArriveOn = false; }
 	void PursuitOn(){ isPursuitOn = true; }
 	void ObsAvoidOn(){ isObsAvoidOn = true; }
 	void AStarOn(){ isAStarOn = true; }

@@ -24,6 +24,8 @@ public:
 
 	void Update(float deltaTime, SDL_Event e);
 
+	Waypoint*  findWaypoint(Vector2D);
+
 
 	//---------------------------------------------------------------
 protected:

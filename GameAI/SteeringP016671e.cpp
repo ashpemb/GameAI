@@ -105,7 +105,7 @@ Vector2D SteeringP016671e::ArriveAtMouse(float deltaTime, Vector2D cursorPos, Ba
 	}
 	if (distance < 50)
 	{
-		speed = distance / (deceleration * 1.5);
+		speed = distance / (deceleration * 2);
 		speed = min(speed, Tank->GetMaxSpeed());
 		Vector2D force = Seek(cursorPos, Tank);
 
@@ -164,7 +164,7 @@ Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, B
 	}
 	if (isArriveOn)
 	{
-		combinedForce += ArriveAtMouse(deltaTime, cursorPos, Tank);
+		combinedForce += (ArriveAtMouse(deltaTime, cursorPos, Tank) * 2);
 	}
 	if (isPursuitOn)
 	{
@@ -177,7 +177,7 @@ Vector2D SteeringP016671e::CalculateForce(float deltaTime, Vector2D cursorPos, B
 	}
 	if (isAStarOn)
 	{
-		combinedForce += (FollowPath(deltaTime, cursorPos, Tank) * 3);
+		combinedForce += (FollowPath(deltaTime, cursorPos, Tank) * 2);
 	}
 	return combinedForce;
 }

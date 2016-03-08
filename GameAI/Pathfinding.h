@@ -9,9 +9,9 @@ using namespace::std;
 
 struct node
 {
-	int f;
-	int g;
-	int h;
+	float f;
+	float g;
+	float h;
 	node* parent;
 	Waypoint* waypoint;
 };
@@ -23,5 +23,19 @@ public:
 	vector<Vector2D> Astar(Waypoint* start, Waypoint* end, Vector2D DestPos);
 	int heuristic(Vector2D a, Vector2D b);
 	~Pathfinding();
+private:
+	vector<node*> availableNodes;
+	vector<node*> openList;
+	vector<node*> closedList;
+
+	vector<Vector2D> path;
+
+	node* childNode;
+	node* currentNode;
+	node* startNode;
+
+	float f = 0.0f;
+	float g = 0.0f;
+	float h = 0.0f;
 };
 
