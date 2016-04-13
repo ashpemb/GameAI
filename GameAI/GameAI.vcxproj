@@ -65,6 +65,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AshPemberton\P016671eFSM.h" />
     <ClInclude Include="AshPemberton\P016671eTank.h" />
     <ClInclude Include="AshPemberton\PathfindingP016671e.h" />
     <ClInclude Include="AshPemberton\SteeringP016671e.h" />
@@ -92,6 +93,7 @@
     <ClInclude Include="WaypointManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AshPemberton\P016671eFSM.cpp" />
     <ClCompile Include="AshPemberton\P016671eTank.cpp" />
     <ClCompile Include="AshPemberton\PathfindingP016671e.cpp" />
     <ClCompile Include="AshPemberton\SteeringP016671e.cpp" />

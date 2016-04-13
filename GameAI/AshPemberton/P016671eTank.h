@@ -2,21 +2,9 @@
 #define P016671ETANK_H
 
 #include "../BaseTank.h"
-#include "SteeringP016671e.h"
+#include "P016671eFSM.h"
 #include <SDL.h>
 #include "../Commons.h"
-#include "../Waypoint.h"
-#include "../WaypointManager.h"
-#include "PathfindingP016671e.h"
-
-enum TANK_FSM
-{
-	PATROL,
-	RUN,
-	FIRE,
-	CHASE,
-	COLLECT,
-};
 
 //---------------------------------------------------------------
 
@@ -31,14 +19,6 @@ public:
 
 	void Update(float deltaTime, SDL_Event e);
 
-	void EnterState();
-	
-	void ExitState();
-
-	void UpdateState();
-
-	Waypoint*  findWaypoint(Vector2D);
-
 
 	//---------------------------------------------------------------
 protected:
@@ -52,17 +32,8 @@ private:
 	TURN_DIRECTION  mManTurnDirection;
 	bool			mManKeyDown;
 	bool			mFireKeyDown;
-	SteeringP016671e* steering;
+	StateMachine* stateMachine;
 	POINT p;
-	int state;
-	Vector2D cursorPos;
-	float mMouseX;
-	float mMouseY;
-	vector<Vector2D> path;
-	Pathfinding* pathfinding;
-	int currentPath;
-	bool isPathfinding;
-	bool arrivedNode;
 };
 
 //---------------------------------------------------------------

@@ -15,16 +15,6 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mManTurnDirection   = DIRECTION_UNKNOWN;
 	mManKeyDown			= false;
 	mFireKeyDown		= false;
-	steering = new SteeringP016671e();
-	pathfinding = new Pathfinding();
-	cursorPos = Vector2D(0.0f,0.0f);
-	mMouseX = 0.0f;
-	mMouseY = 0.0f;
-	path.push_back(WaypointManager::Instance()->GetWaypointWithID(0)->GetPosition());
-	currentPath = 0;
-	isPathfinding = false;
-	arrivedNode = false;
-	state = PATROL;
 	//steering->ObsAvoidOn();
 	//steering->AStarOn();
 	//steering->SeekOn();
@@ -37,7 +27,7 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 
 P016671eTank::~P016671eTank()
 {
-	delete steering;
+	
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -48,24 +38,11 @@ void P016671eTank::ChangeState(BASE_TANK_STATE newState)
 }
 
 //--------------------------------------------------------------------------------------------------
-void P016671eTank::EnterState()
-{
-
-}
-
-void P016671eTank::ExitState()
-{
-
-}
-
-void P016671eTank::UpdateState()
-{
-
-}
 
 void P016671eTank::Update(float deltaTime, SDL_Event e)
 {
-	if (steering->GetPursuit() != true && steering->GetAStar() != true)
+	stateMachine->UpdateState(this, deltaTime);
+	/*if (steering->GetPursuit() != true && steering->GetAStar() != true)
 	{
 		switch (e.type)
 		{
@@ -219,7 +196,7 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 			steering->CalculateForce(deltaTime, path[currentPath], this);
 		}
 		
-	}
+	}*/
 	//Call parent update.
 	BaseTank::Update(deltaTime, e);
 }
@@ -229,7 +206,7 @@ void P016671eTank::Update(float deltaTime, SDL_Event e)
 void P016671eTank::MoveInHeadingDirection(float deltaTime)
 {
 	//Get the force that propels in current heading.
-	Vector2D force = steering->GetForce();
+	Vector2D force = stateMachine->steering->GetForce();
 
 	//Acceleration = Force/Mass
 	Vector2D acceleration = force/GetMass();
@@ -256,22 +233,9 @@ void P016671eTank::MoveInHeadingDirection(float deltaTime)
 		ahead = mHeading;
 	Vec2DNormalize(ahead);
 	
-	if (steering->GetAllowRotate() == true)
+	if (stateMachine->steering->GetAllowRotate() == true)
 	RotateHeadingToFacePosition(GetCentralPosition() + ahead * 10.0f, deltaTime);
 }
 
 //--------------------------------------------------------------------------------------------------
 
-Waypoint* P016671eTank::findWaypoint(Vector2D pos)
-{
-	vector<Waypoint*> allWaypoints = WaypointManager::Instance()->GetAllWaypoints();
-	Waypoint* closest = allWaypoints[0];
-	for (int i = 0; i < allWaypoints.size(); i++)
-	{
-		if (pos.Distance(allWaypoints[i]->GetPosition()) < pos.Distance(closest->GetPosition()))
-		{
-			closest = allWaypoints[i];
-		}
-	}
-	return closest;
-}

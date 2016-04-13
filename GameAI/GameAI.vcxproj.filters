@@ -99,6 +99,9 @@
     <ClInclude Include="AshPemberton\SteeringP016671e.h">
       <Filter>AshPemberton</Filter>
     </ClInclude>
+    <ClInclude Include="AshPemberton\P016671eFSM.h">
+      <Filter>AshPemberton</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WaypointManager.cpp">
@@ -174,6 +177,9 @@
       <Filter>AshPemberton</Filter>
     </ClCompile>
     <ClCompile Include="AshPemberton\SteeringP016671e.cpp">
+      <Filter>AshPemberton</Filter>
+    </ClCompile>
+    <ClCompile Include="AshPemberton\P016671eFSM.cpp">
       <Filter>AshPemberton</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,16 +5,6 @@
 #include "../BaseTank.h"
 #include "../Collisions.h"
 
-enum TANKSTATE {
-	SEEK,
-	ARRIVE,
-	FLEE,
-	EVADE,
-	PURSUIT,
-	SEEKTOMOUSE,
-	FLEEFROMMOUSE,
-
-};
 
 class SteeringP016671e
 {
