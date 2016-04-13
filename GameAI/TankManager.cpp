@@ -7,7 +7,8 @@
 #include "Commons.h"
 #include "Collisions.h"
 #include "ObstacleManager.h"
-#include "p016671e.h"
+#include "DumbTank.h"
+#include "AshPemberton/P016671eTank.h"
 #include <cassert>
 
 
@@ -96,8 +97,13 @@ void TankManager::UpdateTanks(float deltaTime, SDL_Event e)
 		//If the health is below zero, delete this tank.
 		if(mTanks[i]->GetHealth() <= 0)
 		{
-			if(mTankIndexToDelete == -1)
-				mTankIndexToDelete = i;
+			if(!mTanks[i]->IsExploding())
+				mTanks[i]->Explode();
+			else if(mTanks[i]->HasExploded())
+			{
+				if(mTankIndexToDelete == -1)
+					mTankIndexToDelete = i;
+			}
 		}
 	}
 
@@ -185,16 +191,15 @@ BaseTank* TankManager::GetTankObject(SDL_Renderer* renderer, TankSetupDetails de
 		ControlledTank* newControlledTank = new ControlledTank(renderer, details);
 		newBaseTank = (BaseTank*)newControlledTank;
 	}
-	if(details.StudentName == "StillTank")
+	if(details.StudentName == "DumbTank")
 	{
-		BaseTank* newTank = new BaseTank(renderer, details);
+		DumbTank* newTank = new DumbTank(renderer, details);
 		newBaseTank = (BaseTank*)newTank;
 	}
-
 	if (details.StudentName == "AshPemberton")
 	{
-		P016671eTank* newControlledTank = new P016671eTank(renderer, details);
-		newBaseTank = (BaseTank*)newControlledTank;
+		P016671eTank* newTank = new P016671eTank(renderer, details);
+		newBaseTank = (BaseTank*)newTank;
 	}
 
 	//Assert if no tank was setup.
@@ -205,7 +210,7 @@ BaseTank* TankManager::GetTankObject(SDL_Renderer* renderer, TankSetupDetails de
 }
 
 //--------------------------------------------------------------------------------------------------
-
+/*
 void TankManager::CheckForCollisions()
 {
 	vector<GameObject*> listOfObjects = ObstacleManager::Instance()->GetObstacles();
@@ -216,9 +221,6 @@ void TankManager::CheckForCollisions()
 		Rect2D rect = listOfObjects[i]->GetAdjustedBoundingBox();
 		for(unsigned int j = 0; j < mTanks.size(); j++)
 		{
-			//mTanks[j]->GetCornersOfTank(&tl,&tr,&bl,&br);
-			//if(Collisions::Instance()->PointInBox(tl, rect) || Collisions::Instance()->PointInBox(tr, rect) || 
-			//   Collisions::Instance()->PointInBox(bl, rect) || Collisions::Instance()->PointInBox(bl, rect))
 			if(Collisions::Instance()->PointInBox(mTanks[j]->GetPointAtFrontOfTank(), rect) ||
 			   Collisions::Instance()->PointInBox(mTanks[j]->GetPointAtRearOfTank(), rect))
 			{
@@ -227,7 +229,7 @@ void TankManager::CheckForCollisions()
 		}
 	}
 }
-
+*/
 //--------------------------------------------------------------------------------------------------
 
 vector<BaseTank*>	TankManager::GetVisibleTanks(BaseTank* lookingTank)
@@ -239,39 +241,48 @@ vector<BaseTank*>	TankManager::GetVisibleTanks(BaseTank* lookingTank)
 		//Don't test self.
 		if(mTanks[i] != lookingTank)
 		{
-			Vector2D heading = lookingTank->GetHeading();
-			heading.Normalize();
-			Vector2D vecToTarget = lookingTank->GetCentrePosition()-mTanks[i]->GetCentrePosition();
-			double vecToTargetLength = vecToTarget.Length();
-
-			//If tank is too far away then it can't be seen.
-			if(vecToTargetLength < kFieldOfViewLength)
+			if(mTanks.size() == 2)
 			{
-				vecToTarget.Normalize();
-				//cout << "Heading x = " << heading.x << " y = " << heading.y << endl;
-				double dotProduct = heading.Dot(vecToTarget);
-				//cout << "dot = " << dotProduct << endl;
-				if(dotProduct > kFieldOfView)
+				//If only two tanks remain then return the toher tank (not self) even though we might not be able to see it.
+				mVisibleTanks.push_back(mTanks[i]);
+			}
+			else
+			{
+				//More than 2 tanks remaining, so only return those within the FoV.
+				Vector2D heading = lookingTank->GetHeading();
+				heading.Normalize();
+				Vector2D vecToTarget = lookingTank->GetCentralPosition()-mTanks[i]->GetCentralPosition();
+				double vecToTargetLength = vecToTarget.Length();
+
+				//If tank is too far away then it can't be seen.
+				if(vecToTargetLength < kFieldOfViewLength)
 				{
-					Vector2D point1 = lookingTank->GetCentralPosition() + (vecToTarget*(vecToTargetLength*0.33f));
-					Vector2D point2 = lookingTank->GetCentralPosition() + (vecToTarget*(vecToTargetLength*0.5f));
-					Vector2D point3 = lookingTank->GetCentralPosition() + (vecToTarget*(vecToTargetLength*0.66f));
-
-					//Tank is within fov, but is there a building in the way?
-					for(unsigned int j = 0; j < ObstacleManager::Instance()->GetObstacles().size(); j++)
+					vecToTarget.Normalize();
+					//cout << "Heading x = " << heading.x << " y = " << heading.y << endl;
+					double dotProduct = heading.Dot(vecToTarget);
+					//cout << "dot = " << dotProduct << endl;
+					if(dotProduct > kFieldOfView)
 					{
-						GameObject* currentObstacle = ObstacleManager::Instance()->GetObstacles().at(j);
-		
-						//Check if we have collided with this obstacle.
-						if( !Collisions::Instance()->PointInBox(point1, currentObstacle->GetAdjustedBoundingBox()) &&
-							!Collisions::Instance()->PointInBox(point2, currentObstacle->GetAdjustedBoundingBox()) &&
-							!Collisions::Instance()->PointInBox(point3, currentObstacle->GetAdjustedBoundingBox()) )
-						{
-							mVisibleTanks.push_back(mTanks[i]);
-							//cout << "Can see you!!" << endl;
+						Vector2D point1 = lookingTank->GetCentralPosition() + (vecToTarget*(vecToTargetLength*0.33f));
+						Vector2D point2 = lookingTank->GetCentralPosition() + (vecToTarget*(vecToTargetLength*0.5f));
+						Vector2D point3 = lookingTank->GetCentralPosition() + (vecToTarget*(vecToTargetLength*0.66f));
 
-							//Get out of the obstacle check.
-							break;
+						//Tank is within fov, but is there a building in the way?
+						for(unsigned int j = 0; j < ObstacleManager::Instance()->GetObstacles().size(); j++)
+						{
+							GameObject* currentObstacle = ObstacleManager::Instance()->GetObstacles().at(j);
+		
+							//Check if we have collided with this obstacle.
+							if( !Collisions::Instance()->PointInBox(point1, currentObstacle->GetAdjustedBoundingBox()) &&
+								!Collisions::Instance()->PointInBox(point2, currentObstacle->GetAdjustedBoundingBox()) &&
+								!Collisions::Instance()->PointInBox(point3, currentObstacle->GetAdjustedBoundingBox()) )
+							{
+								mVisibleTanks.push_back(mTanks[i]);
+								//cout << "Can see you!!" << endl;
+
+								//Get completely out of the obstacle check.
+								break;
+							}
 						}
 					}
 				}
@@ -293,7 +304,7 @@ vector<BaseTank*>	TankManager::GetAudibleTanks(BaseTank* hearingTank)
 		//Don't test self.
 		if(mTanks[i] != hearingTank)
 		{
-			Vector2D vecToTarget = hearingTank->GetCentrePosition()-mTanks[i]->GetCentrePosition();
+			Vector2D vecToTarget = hearingTank->GetCentralPosition()-mTanks[i]->GetCentralPosition();
 			double vecToTargetLength = vecToTarget.Length();
 
 			//If tank is too far away then it can't be seen.

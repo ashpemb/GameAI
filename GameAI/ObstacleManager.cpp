@@ -79,9 +79,9 @@ void ObstacleManager::LoadObstacles(SDL_Renderer* renderer)
 	{
 		float x = 0;
 		float y = 0;
-		int id = -1;
 		string imagePath;
-				
+		string id;
+
 		//Jump to the first 'objectgroup' element.
 		for(TiXmlElement* groupElement = root->FirstChildElement("objectgroup"); groupElement != NULL; groupElement = groupElement->NextSiblingElement())
 		{
@@ -106,52 +106,24 @@ void ObstacleManager::LoadObstacles(SDL_Renderer* renderer)
 								string name = propertyElement->Attribute("name");
 								if(name == "ID")
 								{
-									id = atoi(propertyElement->Attribute("value"));
+									id = propertyElement->Attribute("value");
+									imagePath = "Images/Obstacle" + id + ".png";
 								}
 							}
 
-							imagePath = GetImagePath(id);
+							//Set the correct obstacle type. Obstacles have indestructable mines attached, borders do not!
+							GAMEOBJECT_TYPE type = GAMEOBJECT_OBSTACLE; 
+							if( (id.compare("6") == 0) || (id.compare("7") == 0) )
+								type = GAMEOBJECT_OBSTACLE_BORDER;
 
 							//Add the new obstacle with the read in details.
-							mObstacles.push_back(new GameObject(renderer, GAMEOBJECT_OBSTACLE, Vector2D(x,y), imagePath));
+							mObstacles.push_back(new GameObject(renderer, type, Vector2D(x,y), imagePath));
 						}		
 					}
 				}
 			}
 		}
 	}
-}
-
-//--------------------------------------------------------------------------------------------------
-
-string ObstacleManager::GetImagePath(int id)
-{
-	string path = "";
-
-	switch(id)
-	{
-		case 0:
-			path = "Images/Building1.png";
-		break;
-
-		case 1:
-			path = "Images/Building2.png";
-		break;
-
-		case 2:
-			path = "Images/Building3.png";
-		break;
-
-		case 3:
-			path = "Images/Building4.png";
-		break;
-
-		case 4:
-			path = "Images/Building5.png";
-		break;
-	}
-
-	return path;
 }
 
 //--------------------------------------------------------------------------------------------------

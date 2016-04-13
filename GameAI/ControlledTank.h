@@ -7,7 +7,7 @@
 
 //---------------------------------------------------------------
 
-class ControlledTank : protected BaseTank
+class ControlledTank : public BaseTank
 {
 	//---------------------------------------------------------------
 public:

@@ -19,6 +19,9 @@
     <Filter Include="XML Data Files">
       <UniqueIdentifier>{b9834924-ea92-46ba-8dd5-33a1015f005b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AshPemberton">
+      <UniqueIdentifier>{f6277843-2d4e-4dd4-ad21-b63992afdf42}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Waypoint.h">
@@ -81,14 +84,20 @@
     <ClInclude Include="TinyXML\tinyxml.h">
       <Filter>TinyXML</Filter>
     </ClInclude>
-    <ClInclude Include="p016671e.h">
+    <ClInclude Include="DumbTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SteeringP016671e.h">
+    <ClInclude Include="LevelMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Pathfinding.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AshPemberton\P016671eTank.h">
+      <Filter>AshPemberton</Filter>
+    </ClInclude>
+    <ClInclude Include="AshPemberton\PathfindingP016671e.h">
+      <Filter>AshPemberton</Filter>
+    </ClInclude>
+    <ClInclude Include="AshPemberton\SteeringP016671e.h">
+      <Filter>AshPemberton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -155,14 +164,17 @@
     <ClCompile Include="TinyXML\tinyxmlparser.cpp">
       <Filter>TinyXML</Filter>
     </ClCompile>
-    <ClCompile Include="p016671e.cpp">
+    <ClCompile Include="DumbTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SteeringP016671e.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AshPemberton\P016671eTank.cpp">
+      <Filter>AshPemberton</Filter>
     </ClCompile>
-    <ClCompile Include="Pathfinding.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AshPemberton\PathfindingP016671e.cpp">
+      <Filter>AshPemberton</Filter>
+    </ClCompile>
+    <ClCompile Include="AshPemberton\SteeringP016671e.cpp">
+      <Filter>AshPemberton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

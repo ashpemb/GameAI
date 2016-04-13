@@ -175,9 +175,9 @@ void CloseSDL()
 	gameScreenManager = NULL;
 
 	//Destroy the window.
-	SDL_DestroyRenderer(gRenderer);
+	//SDL_DestroyRenderer(gRenderer);
 	gRenderer = NULL;
-	SDL_DestroyWindow(gWindow);
+	//SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
 
 	//Release music.

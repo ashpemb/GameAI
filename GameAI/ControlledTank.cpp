@@ -34,7 +34,6 @@ void ControlledTank::ChangeState(BASE_TANK_STATE newState)
 
 void ControlledTank::Update(float deltaTime, SDL_Event e)
 {
-	//TODO: Adjust mHeading.
 	switch(e.type)
 	{
 		//Deal with keyboard input.
@@ -164,9 +163,9 @@ void ControlledTank::Update(float deltaTime, SDL_Event e)
 	if(mManKeyDown)
 	{
 		if(mManTurnDirection == DIRECTION_LEFT)
-			RotateManByRadian(-0.05f, 1);
+			RotateManByRadian(-kManTurnRate, 1, deltaTime);
 		else if(mManTurnDirection == DIRECTION_RIGHT)
-			RotateManByRadian(0.05f, 1);
+			RotateManByRadian(kManTurnRate, 1, deltaTime);
 	}
 
 	//Call parent update.

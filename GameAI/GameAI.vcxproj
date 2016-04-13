@@ -65,23 +65,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AshPemberton\P016671eTank.h" />
+    <ClInclude Include="AshPemberton\PathfindingP016671e.h" />
+    <ClInclude Include="AshPemberton\SteeringP016671e.h" />
     <ClInclude Include="BaseTank.h" />
     <ClInclude Include="C2DMatrix.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Commons.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="ControlledTank.h" />
+    <ClInclude Include="DumbTank.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GameScreenLevel1.h" />
     <ClInclude Include="GameScreenManager.h" />
+    <ClInclude Include="LevelMap.h" />
     <ClInclude Include="ObstacleManager.h" />
-    <ClInclude Include="p016671e.h" />
-    <ClInclude Include="Pathfinding.h" />
     <ClInclude Include="PickUpManager.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileManager.h" />
-    <ClInclude Include="SteeringP016671e.h" />
     <ClInclude Include="TankManager.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TinyXML\tinystr.h" />
@@ -90,22 +92,23 @@
     <ClInclude Include="WaypointManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AshPemberton\P016671eTank.cpp" />
+    <ClCompile Include="AshPemberton\PathfindingP016671e.cpp" />
+    <ClCompile Include="AshPemberton\SteeringP016671e.cpp" />
     <ClCompile Include="BaseTank.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="ControlledTank.cpp" />
+    <ClCompile Include="DumbTank.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameScreenLevel1.cpp" />
     <ClCompile Include="GameScreenManager.cpp" />
     <ClCompile Include="LevelMap.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
-    <ClCompile Include="p016671e.cpp" />
-    <ClCompile Include="Pathfinding.cpp" />
     <ClCompile Include="PickUpManager.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="SteeringP016671e.cpp" />
     <ClCompile Include="TankManager.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="TinyXML\tinystr.cpp" />
@@ -127,7 +130,9 @@
       <SubType>Designer</SubType>
     </Xml>
     <Xml Include="XML Data Files\GameAIOneBuilding.xml" />
-    <Xml Include="XML Data Files\TankData.xml" />
+    <Xml Include="XML Data Files\TankData.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

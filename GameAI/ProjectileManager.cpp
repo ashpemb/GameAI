@@ -229,26 +229,44 @@ void ProjectileManager::SetUpIndestructibleMines()
 	details.ImagePath		= kMinePath;
 	details.RotationAngle	= 0.0f;
 
+	//Indestructable mines on buildings.
 	for(unsigned int i = 0; i < ObstacleManager::Instance()->GetObstacles().size(); i++)
 	{
 		GameObject* currentObstacle = ObstacleManager::Instance()->GetObstacles().at(i);
-		Rect2D boundingBox = currentObstacle->GetAdjustedBoundingBox();
-
-		//Create some offsets for spawn positions.
-		Vector2D spawnPos[] = { Vector2D(-(boundingBox.width*0.45f),-(boundingBox.height*0.4f)),
-								Vector2D(boundingBox.width*0.45f,-(boundingBox.height*0.4f)),
-								Vector2D(),
-								Vector2D(-(boundingBox.width*0.45f),boundingBox.height*0.4f),
-								Vector2D(boundingBox.width*0.45f,boundingBox.height*0.4f)
-							  };
-
-		//Create 5 mines upon each obstacle.
-		for(unsigned int j = 0; j < 5; j++)
+		if(currentObstacle->GetGameObjectType() != GAMEOBJECT_OBSTACLE_BORDER)
 		{
-			details.StartPosition	= Vector2D( currentObstacle->GetCentralPosition().x + spawnPos[j].x,
-												currentObstacle->GetCentralPosition().y + spawnPos[j].y);
+			Rect2D boundingBox = currentObstacle->GetAdjustedBoundingBox();
 
-			mInstance->mIndestructibleMines.push_back(new Projectile(mRenderer, details, NULL));
+			//Create some offsets for spawn positions.
+			Vector2D spawnPos[] = { Vector2D(-(boundingBox.width*0.4f),-(boundingBox.height*0.4f)),
+									Vector2D(boundingBox.width*0.4f,-(boundingBox.height*0.4f)),
+									Vector2D(),
+									Vector2D(-(boundingBox.width*0.4f),boundingBox.height*0.4f),
+									Vector2D(boundingBox.width*0.4f,boundingBox.height*0.4f)
+								  };
+
+			//Create 5 mines upon each obstacle.
+			for(unsigned int j = 0; j < 5; j++)
+			{
+				details.StartPosition	= Vector2D( currentObstacle->GetCentralPosition().x + spawnPos[j].x,
+													currentObstacle->GetCentralPosition().y + spawnPos[j].y);
+
+				mInstance->mIndestructibleMines.push_back(new Projectile(mRenderer, details, NULL));
+			}
+		}
+	}
+
+	//Indestructable mines around gameboard.
+	for(unsigned int x = 0; x < kScreenWidth; x++)
+	{
+		for(unsigned int y = 0; y < kScreenHeight; y++)
+		{
+			if( (y == 0 || y == (kScreenHeight-1)/kTileDimensions) ||
+				(x == 0 || x == (kScreenWidth-1)/kTileDimensions) )
+			{
+				details.StartPosition	= Vector2D( (x * kTileDimensions)+(kTileDimensions*0.5f), (y * kTileDimensions)+(kTileDimensions*0.5f));
+				mInstance->mIndestructibleMines.push_back(new Projectile(mRenderer, details, NULL));
+			}
 		}
 	}
 }
@@ -266,7 +284,7 @@ vector<GameObject*> ProjectileManager::GetVisibleMines(BaseTank* lookingTank)
 		{
 			Vector2D heading = lookingTank->GetHeading();
 			heading.Normalize();
-			Vector2D vecToTarget = lookingTank->GetCentrePosition()-currentProjectile->GetCentralPosition();
+			Vector2D vecToTarget = lookingTank->GetCentralPosition()-currentProjectile->GetCentralPosition();
 			double vecToTargetLength = vecToTarget.Length();
 
 			//If Mine is too far away then it can't be seen.

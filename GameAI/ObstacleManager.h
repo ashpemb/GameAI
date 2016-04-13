@@ -31,7 +31,6 @@ private:
 	ObstacleManager();
 
 	void   LoadObstacles(SDL_Renderer* renderer);
-	string GetImagePath(int id);
 
 	//---------------------------------------------------------------
 private:

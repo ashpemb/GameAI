@@ -52,11 +52,11 @@ void GameScreenLevel1::Render()
 	//Draw the background.
 	mLevelMap->Render();
 
-	//Draw the obstacles over the level map.
-	ObstacleManager::Instance()->RenderObstacles();
-
 	//Draw the bullets.
 	ProjectileManager::Instance()->RenderProjectiles();
+	
+	//Draw the obstacles over the level map.
+	ObstacleManager::Instance()->RenderObstacles();
 
 	//Draw the waypoints.
 	WaypointManager::Instance()->RenderWaypoints();
@@ -95,6 +95,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 	//Update the bullets.
 	ProjectileManager::Instance()->UpdateProjectiles(deltaTime);
+
 	//Do collision checks.
 	ProjectileManager::Instance()->CheckForCollisions(ObstacleManager::Instance()->GetObstacles());
 	ProjectileManager::Instance()->CheckForCollisions(TankManager::Instance()->GetTanks());

@@ -8,12 +8,13 @@ using namespace::std;
 
 #define WAYPOINTS_VISIBLE
 #define AUDIO_VISIBLE 
+#define DEBUG_LINES_VISIBLE
 
 const string kTilemapPath			= "XML Data Files/Arena.xml";
 const string kScorePath				= "Scores/Scores.txt";
 const string kTankPath				= "XML Data Files/TankData.xml";
 const string kBulletPath			= "Images/Bullet.png";
-const string kRocketPath			= "Images/Rocket2.png";
+const string kRocketPath			= "Images/Rocket.png";
 const string kMinePath				= "Images/Mine.png";
 const string kCannonPath			= "Images/Cannon.png";
 const string kWaypointPath			= "Images/Waypoint.png";
@@ -21,13 +22,7 @@ const string kHealthPickUpPath		= "Images/CrateHealth.png";
 const string kRocketPickUpPath		= "Images/CrateRockets.png";
 const string kBulletPickUpPath		= "Images/CrateBullets.png";
 const string kMinePickUpPath		= "Images/CrateMines.png";
-
-const string kLargeAudioPath		= "Images/AudioLarge.png";
-const string kMediumAudioPath		= "Images/AudioMedium.png";
-const string kSmallAudioPath		= "Images/AudioSmall.png";
-const string kLargeNoisePath		= "Images/NoiseLarge.png";
-const string kMediumNoisePath		= "Images/NoiseMedium.png";
-const string kSmallNoisePath		= "Images/NoiseSmall.png";
+const string kExplosionImagePath	= "Images/Explosion.png";
 
 enum Deceleration
 { 
@@ -40,6 +35,7 @@ enum GAMEOBJECT_TYPE
 {
 	GAMEOBJECT_UNKNOWN,
 	GAMEOBJECT_OBSTACLE,
+	GAMEOBJECT_OBSTACLE_BORDER,
 	GAMEOBJECT_BULLET,
 	GAMEOBJECT_MINE,
 	GAMEOBJECT_ROCKET,
@@ -117,6 +113,14 @@ enum STEERING_BEHAVIOUR
 	STEERING_HIDE
 };
 
+struct RotatedRect2D
+{
+	double minX;
+	double maxX;
+	double minY;
+	double maxY;
+};
+
 struct Rect2D
 {
 	double x;
@@ -130,6 +134,62 @@ struct Rect2D
 		y		= initialY;
 		width	= initialWidth;
 		height	= initialHeight;
+	}
+
+	RotatedRect2D RotateRect(double theta)
+	{
+		RotatedRect2D rotatedRect;
+		double centreX = x + width*0.5f;
+		double centreY = y + height*0.5f;
+
+		double cosTheta = cos( theta );
+		double sinTheta = sin( theta );
+
+		double heightCosTheta = (height*0.5) * cosTheta;
+		double widthCosTheta  = (width*0.5)  * cosTheta;
+		double heightSinTheta = (height*0.5) * sinTheta;
+		double widthSinTheta  = (width*0.5)  * sinTheta;
+
+		if ( theta > 0 )
+		{
+			if ( theta < 90.0f )
+			{
+				// 0 < theta < 90
+				rotatedRect.minY = centreY;
+				rotatedRect.maxY = centreY + heightCosTheta + widthSinTheta;
+				rotatedRect.minX = centreX - heightSinTheta;
+				rotatedRect.maxX = centreX + widthCosTheta;
+			}
+			else
+			{
+				// 90 <= theta <= 180
+				rotatedRect.minY = centreY + heightCosTheta;
+				rotatedRect.maxY = centreY + widthSinTheta;
+				rotatedRect.minX = centreX - heightSinTheta + widthCosTheta;
+				rotatedRect.maxX = centreX;
+			}
+		}
+		else
+		{
+			if ( theta > -90.0f )
+			{
+				// -90 < theta <= 0
+				rotatedRect.minY = centreY + widthSinTheta;
+				rotatedRect.maxY = centreY + heightCosTheta;
+				rotatedRect.minX = centreX;
+				rotatedRect.maxX = centreX + widthCosTheta - heightSinTheta;
+			}
+			else
+			{
+				// -180 <= theta <= -90
+				rotatedRect.minY = centreY + widthSinTheta + heightCosTheta;
+				rotatedRect.maxY = centreY;
+				rotatedRect.minX = centreX + widthCosTheta;
+				rotatedRect.maxX = centreX - heightSinTheta;
+			}
+		}
+
+		return rotatedRect;
 	}
 };
 

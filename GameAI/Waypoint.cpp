@@ -39,6 +39,8 @@ void Waypoint::Render()
 	for(unsigned int i = 0; i < mConnectedWaypointIDs.size(); i++)
 	{
 		Waypoint* connectedWaypoint = WaypointManager::Instance()->GetWaypointWithID(mConnectedWaypointIDs[i]);
+
+		SDL_SetRenderDrawColor(mRenderer, 0, 255, 0, 255);
 		SDL_RenderDrawLine(mRenderer, (int)mPosition.x, (int)mPosition.y, (int)connectedWaypoint->GetPosition().x, (int)connectedWaypoint->GetPosition().y);
 	}
 

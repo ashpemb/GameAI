@@ -44,124 +44,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: ControlledTank   SCORE: 15
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 3	= 15
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: ControlledTank   SCORE: 15
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 3	= 15
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: ControlledTank   SCORE: 20
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 4	= 20
--------------------------------------------------------------
--------------------------------------------------------------
 Tank name: ControlledTank   SCORE: 5
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 1	= 5
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 5
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 1	= 5
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 5
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 1	= 5
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: ControlledTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: ControlledTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: ControlledTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: ControlledTank   SCORE: 5
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 1	= 5
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 5
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -179,232 +62,16 @@ Crates collected: 0	= 0
 Survival bonus': 1	= 5
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 5
+Tank name: ControlledTank   SCORE: 5
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
 Tanks destroyed: 0	= 0
 Crates collected: 0	= 0
 Survival bonus': 1	= 5
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 5
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 1	= 5
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 5
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 1	= 5
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
 -------------------------------------------------------------
 -------------------------------------------------------------
 Tank name: ControlledTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -422,7 +89,25 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: ControlledTank   SCORE: 2.5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 1	= 2.5
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 1
+Bullets hit: 0		= 0
+Rockets hit: 1		= 1
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -440,7 +125,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: ControlledTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -449,7 +134,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: DumbTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -458,7 +143,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: ControlledTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -467,7 +152,34 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -476,16 +188,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: DumbTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -494,7 +197,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: ControlledTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -503,7 +206,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: ControlledTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -512,7 +215,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: ControlledTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -521,7 +224,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
+Tank name: ControlledTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -530,7 +233,331 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 5
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -564,103 +591,4 @@ Mines hit: 0		= 0
 Tanks destroyed: 0	= 0
 Crates collected: 0	= 0
 Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 5
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 1	= 5
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: ControlledTank   SCORE: 25
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 5	= 25
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 25
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 5	= 25
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: ControlledTank   SCORE: 30
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 6	= 30
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 30
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 6	= 30
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 30
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 6	= 30
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: AshPemberton   SCORE: 5
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 1	= 5
 -------------------------------------------------------------
