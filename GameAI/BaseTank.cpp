@@ -56,7 +56,7 @@ BaseTank::BaseTank(SDL_Renderer* renderer, TankSetupDetails details)
 
 	//TODO: Read these details in from xml.
 	mMaxForce				= 10.0f;
-	mMaxTurnRate			= details.TurnRate / 500.0f;
+	mMaxTurnRate			= details.TurnRate;
 
 	mRockets				= details.NumOfRockets;
 	mBullets				= details.NumOfBullets;
@@ -271,7 +271,7 @@ void BaseTank::Update(float deltaTime, SDL_Event e)
 		}
 
 		mTanksICanSee  = TankManager::Instance()->GetVisibleTanks(this);
-		mTanksICanHear = TankManager::Instance()->GetAudibleTanks(this);
+		//mTanksICanHear = TankManager::Instance()->GetAudibleTanks(this);
 
 		MoveInHeadingDirection(deltaTime);
 

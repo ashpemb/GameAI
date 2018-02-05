@@ -1,18 +1,18 @@
 #include "PathfindingP016671e.h"
 
 
-Pathfinding::Pathfinding()
+P016671ePathfinding::P016671ePathfinding()
 {
 }
 
-vector<Vector2D> Pathfinding::Astar(Waypoint* start, Waypoint* end, Vector2D DestPos)
+vector<Vector2D> P016671ePathfinding::Astar(Waypoint* start, Waypoint* end, Vector2D DestPos)
 {
 	closedList.clear();
 	openList.clear();
 	path.clear();
 
 	//create all nodes in the scene
-	for (int i = 0; i < WaypointManager::Instance()->GetAllWaypoints().size(); i++)
+	for (unsigned i = 0; i < WaypointManager::Instance()->GetAllWaypoints().size(); i++)
 	{
 		node* Node = new node;
 
@@ -37,13 +37,13 @@ vector<Vector2D> Pathfinding::Astar(Waypoint* start, Waypoint* end, Vector2D Des
 
 	currentNode = startNode;
 	//outputs start and end node for debugging
-	cout << "start node is " << start->GetID() << "endnode is " << end->GetID() << endl;
+	//cout << "start node is " << start->GetID() << "endnode is " << end->GetID() << endl;
 
 	while (!openList.empty())
 	{
 		int lowestIndex = 0;
 
-		for (int i = 0; i < openList.size(); i++)
+		for (unsigned i = 0; i < openList.size(); i++)
 		{
 			if (openList[i]->f < openList[lowestIndex]->f)
 			{
@@ -60,20 +60,20 @@ vector<Vector2D> Pathfinding::Astar(Waypoint* start, Waypoint* end, Vector2D Des
 
 			while (cur->parent)
 			{
-				cout << cur->waypoint->GetID() << " ";
+				//cout << cur->waypoint->GetID() << " ";
 				path.push_back(cur->waypoint->GetPosition());
 				cur = cur->parent;
 			}
 			//output is opposite of path because its reversed after
-			cout << cur->waypoint->GetID() << " ";
+			//cout << cur->waypoint->GetID() << " ";
 			path.push_back(cur->waypoint->GetPosition());
 
-			//return path to be used by steering behaiviours
+			//return path to be used by steering behaviours
 			std::reverse(path.begin(), path.end());
 			return path;
 		}
 
-		//erase the open list push the current node onto the closed list
+		//erase the open list, push the current node onto the closed list
 		openList.erase(std::remove(openList.begin(), openList.end(), currentNode), openList.end());
 		closedList.push_back(currentNode);
 
@@ -81,7 +81,7 @@ vector<Vector2D> Pathfinding::Astar(Waypoint* start, Waypoint* end, Vector2D Des
 
 		for each (int child in children)
 		{
-			for (int i = 0; i < availableNodes.size(); i++)
+			for (unsigned i = 0; i < availableNodes.size(); i++)
 			{
 				if (availableNodes[i]->waypoint->GetID() == child)
 				{
@@ -89,7 +89,7 @@ vector<Vector2D> Pathfinding::Astar(Waypoint* start, Waypoint* end, Vector2D Des
 				}
 			}
 
-			if (find(closedList.begin(), closedList.end(), childNode) != closedList.end()) //is it in closed list?????? who knows
+			if (find(closedList.begin(), closedList.end(), childNode) != closedList.end()) //check if the child is in the closed list
 			{
 				continue;
 			}
@@ -102,7 +102,7 @@ vector<Vector2D> Pathfinding::Astar(Waypoint* start, Waypoint* end, Vector2D Des
 			if (find(openList.begin(), openList.end(), childNode) == openList.end())
 			{
 				bestG = true;
-				childNode->h = heuristic(childNode->waypoint->GetPosition(), end->GetPosition());
+				childNode->h = (float)heuristic(childNode->waypoint->GetPosition(), end->GetPosition());
 				openList.push_back(childNode);
 			}
 			else if (g < childNode->g)
@@ -121,14 +121,14 @@ vector<Vector2D> Pathfinding::Astar(Waypoint* start, Waypoint* end, Vector2D Des
 	}
 }
 
-int Pathfinding::heuristic(Vector2D a, Vector2D b)
+int P016671ePathfinding::heuristic(Vector2D a, Vector2D b) //basic heuristic calculation
 {
-	int xVect = abs(b.x - a.x);
-	int yVect = abs(b.y - a.y);
+	int xVect = (int)abs(b.x - a.x);
+	int yVect = (int)abs(b.y - a.y);
 
 	return xVect + yVect;
 }
 
-Pathfinding::~Pathfinding()
+P016671ePathfinding::~P016671ePathfinding()
 {
 }

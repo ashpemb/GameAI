@@ -1,0 +1,3 @@
+﻿  PathfindingP016671e.cpp
+g:\ashley\documents\git\gameai\gameai\ashpemberton\pathfindingp016671e.cpp(122): warning C4715: 'P016671ePathfinding::Astar': not all control paths return a value
+  GameAI.vcxproj -> G:\Ashley\Documents\Git\GameAI\Debug\GameAI.exe

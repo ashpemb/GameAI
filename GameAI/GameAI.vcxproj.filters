@@ -9,18 +9,18 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="TinyXML">
       <UniqueIdentifier>{1d544555-3274-48e7-8786-45b7fe063987}</UniqueIdentifier>
     </Filter>
     <Filter Include="XML Data Files">
       <UniqueIdentifier>{b9834924-ea92-46ba-8dd5-33a1015f005b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AshPemberton">
-      <UniqueIdentifier>{f6277843-2d4e-4dd4-ad21-b63992afdf42}</UniqueIdentifier>
+    <Filter Include="Ash Pemberton">
+      <UniqueIdentifier>{4e0259a3-82f1-41f7-b78c-4d3da59c7985}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,17 +90,17 @@
     <ClInclude Include="LevelMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AshPemberton\P016671eFSM.h">
+      <Filter>Ash Pemberton</Filter>
+    </ClInclude>
     <ClInclude Include="AshPemberton\P016671eTank.h">
-      <Filter>AshPemberton</Filter>
+      <Filter>Ash Pemberton</Filter>
     </ClInclude>
     <ClInclude Include="AshPemberton\PathfindingP016671e.h">
-      <Filter>AshPemberton</Filter>
+      <Filter>Ash Pemberton</Filter>
     </ClInclude>
     <ClInclude Include="AshPemberton\SteeringP016671e.h">
-      <Filter>AshPemberton</Filter>
-    </ClInclude>
-    <ClInclude Include="AshPemberton\P016671eFSM.h">
-      <Filter>AshPemberton</Filter>
+      <Filter>Ash Pemberton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,17 +170,17 @@
     <ClCompile Include="DumbTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AshPemberton\P016671eFSM.cpp">
+      <Filter>Ash Pemberton</Filter>
+    </ClCompile>
     <ClCompile Include="AshPemberton\P016671eTank.cpp">
-      <Filter>AshPemberton</Filter>
+      <Filter>Ash Pemberton</Filter>
     </ClCompile>
     <ClCompile Include="AshPemberton\PathfindingP016671e.cpp">
-      <Filter>AshPemberton</Filter>
+      <Filter>Ash Pemberton</Filter>
     </ClCompile>
     <ClCompile Include="AshPemberton\SteeringP016671e.cpp">
-      <Filter>AshPemberton</Filter>
-    </ClCompile>
-    <ClCompile Include="AshPemberton\P016671eFSM.cpp">
-      <Filter>AshPemberton</Filter>
+      <Filter>Ash Pemberton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

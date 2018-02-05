@@ -48,15 +48,15 @@ Vector2D SteeringP016671e::ObstacleAvoid(float deltaTime, Vector2D cursorPos, Ba
 	Vector2D AvoidRight2(0, 0);
 	std::vector<GameObject*>::const_iterator cur0b = ObstacleM.begin();
 	Vector2D PosLeft = (Tank->GetCentralPosition() - (Tank->GetSide() * 10));
-	Vector2D PosLeft2 = (Tank->GetCentralPosition() - (Tank->GetSide() * 30));
+	Vector2D PosLeft2 = (Tank->GetCentralPosition() - (Tank->GetSide() * 35));
 	Vector2D PosRight = (Tank->GetCentralPosition() + (Tank->GetSide() * 10));
-	Vector2D PosRight2 = (Tank->GetCentralPosition() + (Tank->GetSide() * 30));
+	Vector2D PosRight2 = (Tank->GetCentralPosition() + (Tank->GetSide() * 35));
 	Vector2D AheadCheckLeft = PosLeft + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
 	Vector2D AheadCheckLeft2 = PosLeft + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
 	Vector2D AheadCheckRight = PosRight + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
 	Vector2D AheadCheckRight2 = PosRight + Vec2DNormalize(Tank->GetVelocity()) * AvoidCheckDistance;
 
-	for (int i = 0; i < ObstacleM.size(); i++)
+	for (unsigned i = 0; i < ObstacleM.size(); i++)
 	{
 
 		if (Collisions::Instance()->PointInBox(AheadCheckLeft, ObstacleM[i]->GetAdjustedBoundingBox()))
