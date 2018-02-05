@@ -241,7 +241,7 @@ vector<BaseTank*>	TankManager::GetVisibleTanks(BaseTank* lookingTank)
 		//Don't test self.
 		if(mTanks[i] != lookingTank)
 		{
-			if(mTanks.size() == 2)
+			if(mTanks.size() == 1)
 			{
 				//If only two tanks remain then return the toher tank (not self) even though we might not be able to see it.
 				mVisibleTanks.push_back(mTanks[i]);

@@ -32,7 +32,7 @@ private:
 	TURN_DIRECTION  mManTurnDirection;
 	bool			mManKeyDown;
 	bool			mFireKeyDown;
-	StateMachine* stateMachine;
+	P016671eStateMachine* stateMachine;
 	POINT p;
 };
 

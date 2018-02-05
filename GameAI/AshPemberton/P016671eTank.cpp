@@ -15,12 +15,7 @@ P016671eTank::P016671eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mManTurnDirection   = DIRECTION_UNKNOWN;
 	mManKeyDown			= false;
 	mFireKeyDown		= false;
-	//steering->ObsAvoidOn();
-	//steering->AStarOn();
-	//steering->SeekOn();
-	//steering->FleeOn();
-	//steering->ArriveOn();
-	//steering->PursuitOn();
+	stateMachine = new P016671eStateMachine;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -42,161 +37,42 @@ void P016671eTank::ChangeState(BASE_TANK_STATE newState)
 void P016671eTank::Update(float deltaTime, SDL_Event e)
 {
 	stateMachine->UpdateState(this, deltaTime);
-	/*if (steering->GetPursuit() != true && steering->GetAStar() != true)
+	if (stateMachine->IsInState() == CHASE)
 	{
-		switch (e.type)
+		if (mTanksICanSee.size() != 0)
 		{
-		case SDL_MOUSEBUTTONDOWN:
-			mMouseX = e.button.x;
-			mMouseY = e.button.y;
 
-			cursorPos = { mMouseX, mMouseY };
+			//Rotate man to face enemy tank.
+			Vector2D toTarget = mTanksICanSee[0]->GetCentralPosition() - GetCentralPosition();
+			toTarget.Normalize();
+			//Determine the angle between the heading vector and the target.
+			double angle = acos(mManFireDirection.Dot(toTarget));
 
-			steering->CalculateForce(deltaTime, cursorPos, this);
-			break;
-		}
-		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
-		{
-			steering->CalculateForce(deltaTime, cursorPos, this);
-		}
-		Vector2D click = cursorPos - GetCentralPosition();
-		if (steering->GetArrive() == true && click.Length() < 1)
-		{
-			mVelocity.x = 0;
-			mVelocity.y = 0;
+			//Ensure angle does not become NaN and cause the tank to disappear.
+			if (angle != angle)
+				angle = 0.0f;
+			double dot = toTarget.Dot(mManFireDirection);
+			if (dot < 0.999f)
+			{
+				RotateManByRadian(angle, mManFireDirection.Sign(toTarget), deltaTime);
+				
+			}
+			else
+			{
+				this->FireABullet();
+			}
+
+
+
+			this->FireRockets();
+			if (stateMachine->Stop())
+			mVelocity = { 0, 0 };
 		}
 	}
-	if (steering->GetAStar())
+	if (stateMachine->DropMine() == true)
 	{
-		switch (e.type)
-		{
-		case SDL_MOUSEBUTTONDOWN:
-			mMouseX = e.button.x;
-			mMouseY = e.button.y;
-
-			cursorPos = { mMouseX, mMouseY };
-
-			steering->SeekOff();
-
-			Waypoint* tankWaypoint = findWaypoint(this->GetCentralPosition());
-
-			Waypoint* targetWaypoint = findWaypoint(cursorPos);
-
-			path.clear();
-			currentPath = 0;
-
-			path = pathfinding->Astar(tankWaypoint, targetWaypoint, cursorPos);
-
-			isPathfinding = true;
-			steering->CalculateForce(deltaTime, path[currentPath], this);
-
-			break;
-		}
-		
-			Vector2D toTar = path[currentPath] - this->GetCentralPosition();
-
-			if (isPathfinding == true)
-			{
-				if (toTar.Length() >= 10.0f)
-				{
-					arrivedNode = false;
-				}
-				if (arrivedNode == true && currentPath != path.size() - 1)
-				{
-					currentPath++;
-				}
-				if (toTar.Length() <= 10.0f && arrivedNode == false)
-				{
-					arrivedNode = true;
-				}
-				if ((cursorPos - this->GetCentralPosition()).Length() <= 5.0f)
-				{
-					isPathfinding = false;
-					steering->AStarOff();
-					steering->Pathon();
-					steering->SeekOn();
-					steering->SeekToMouse(deltaTime, cursorPos, this);
-
-				}
-				steering->CalculateForce(deltaTime, path[currentPath], this);
-			}
-			
-		
+		this->DropAMine();
 	}
-	if (steering->GetPursuit())
-	{
-		switch (e.type)
-		{
-		case SDL_MOUSEMOTION:
-			mMouseX = e.motion.x;
-			mMouseY = e.motion.y;
-
-			cursorPos = { mMouseX, mMouseY };
-
-			steering->CalculateForce(deltaTime, cursorPos, this);
-			break;
-		}
-		if (cursorPos.x != 0.0f && cursorPos.y != 0.0f)
-		{
-			steering->CalculateForce(deltaTime, cursorPos, this);
-		}
-	}
-	if (steering->GetPathOff())
-	{
-		switch (e.type)
-		{
-		case SDL_MOUSEBUTTONDOWN:
-			mMouseX = e.button.x;
-			mMouseY = e.button.y;
-
-			cursorPos = { mMouseX, mMouseY };
-			steering->SeekOff();
-			steering->AStarOn();
-			steering->Pathoff();
-
-			Waypoint* tankWaypoint = findWaypoint(this->GetCentralPosition());
-
-			Waypoint* targetWaypoint = findWaypoint(cursorPos);
-
-			path.clear();
-			currentPath = 0;
-
-			path = pathfinding->Astar(tankWaypoint, targetWaypoint, cursorPos);
-
-			isPathfinding = true;
-			steering->CalculateForce(deltaTime, path[currentPath], this);
-
-			break;
-		}
-
-		Vector2D toTar = path[currentPath] - this->GetCentralPosition();
-
-		if (isPathfinding == true)
-		{
-			if (toTar.Length() >= 10.0f)
-			{
-				arrivedNode = false;
-			}
-			if (arrivedNode == true && currentPath != path.size() - 1)
-			{
-				currentPath++;
-			}
-			if (toTar.Length() <= 10.0f && arrivedNode == false)
-			{
-				arrivedNode = true;
-			}
-			if ((cursorPos - this->GetCentralPosition()).Length() <= 5.0f)
-			{
-				isPathfinding = false;
-				steering->AStarOff();
-				steering->Pathon();
-				steering->SeekOn();
-				steering->SeekToMouse(deltaTime, cursorPos, this);
-			}
-			steering->CalculateForce(deltaTime, path[currentPath], this);
-		}
-		
-	}*/
 	//Call parent update.
 	BaseTank::Update(deltaTime, e);
 }
@@ -234,7 +110,7 @@ void P016671eTank::MoveInHeadingDirection(float deltaTime)
 	Vec2DNormalize(ahead);
 	
 	if (stateMachine->steering->GetAllowRotate() == true)
-	RotateHeadingToFacePosition(GetCentralPosition() + ahead * 10.0f, deltaTime);
+	RotateHeadingToFacePosition(GetCentralPosition() + ahead * 10.0f, deltaTime * 6.0f);
 }
 
 //--------------------------------------------------------------------------------------------------

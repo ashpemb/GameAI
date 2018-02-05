@@ -16,10 +16,12 @@ public:
 	void ArriveOn(){ isArriveOn = true; }
 	void ArriveOff(){ isArriveOn = false; }
 	void PursuitOn(){ isPursuitOn = true; }
+	void PursuitOff(){ isPursuitOn = false; }
 	void ObsAvoidOn(){ isObsAvoidOn = true; }
 	void AStarOn(){ isAStarOn = true; }
 	void Pathoff(){ pathfindingTurnedOff = false; }
 	void Pathon(){ pathfindingTurnedOff = true; }
+	void AllOff(){ isSeekOn = false; isArriveOn = false; isPursuitOn = false; isAStarOn = false; isObsAvoidOn = false; }
 	void AStarOff();
 	bool GetSeek(){ return isSeekOn; }
 	bool GetFlee(){ return isFleeOn; }
@@ -50,7 +52,7 @@ private:
 	double fleeRadius;
 	double arriveRadius;
 	double deceleration = 2;
-	double AvoidCheckDistance = 50;
+	double AvoidCheckDistance = 10;
 	bool isObsAvoidOn = false;
 	bool isFleeOn = false;
 	bool isSeekOn = false;

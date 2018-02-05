@@ -16,13 +16,13 @@ struct node
 	Waypoint* waypoint;
 };
 
-class Pathfinding
+class P016671ePathfinding
 {
 public:
-	Pathfinding();
+	P016671ePathfinding();
 	vector<Vector2D> Astar(Waypoint* start, Waypoint* end, Vector2D DestPos);
 	int heuristic(Vector2D a, Vector2D b);
-	~Pathfinding();
+	~P016671ePathfinding();
 private:
 	vector<node*> availableNodes;
 	vector<node*> openList;
